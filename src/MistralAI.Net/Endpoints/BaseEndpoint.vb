@@ -40,6 +40,21 @@ Namespace MistralAI.Net.Endpoints
             _httpClient = client
             _apiKey = apiKey
             _baseUrl = If(baseUrl.EndsWith("/"), baseUrl, baseUrl & "/")
+            
+            ' Configure HttpClient if not already configured
+            If _httpClient.BaseAddress Is Nothing Then
+                _httpClient.BaseAddress = New Uri(_baseUrl)
+            End If
+            
+            ' Set authorization header if not already set
+            If Not _httpClient.DefaultRequestHeaders.Contains("Authorization") Then
+                _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {_apiKey}")
+            End If
+            
+            ' Set user agent if not already set
+            If String.IsNullOrEmpty(_httpClient.DefaultRequestHeaders.UserAgent.ToString()) Then
+                _httpClient.DefaultRequestHeaders.Add("User-Agent", "MistralAI.Net/1.0.0")
+            End If
         End Sub
 
         ''' <summary>
@@ -49,7 +64,8 @@ Namespace MistralAI.Net.Endpoints
         ''' <returns>The JSON response as a string.</returns>
         Protected Async Function GetAsync(endpoint As String) As Task(Of String)
             Try
-                Using response = Await _httpClient.GetAsync(endpoint.TrimStart("/"c))
+                Dim relativeEndpoint = endpoint.TrimStart("/"c)
+                Using response = Await _httpClient.GetAsync(relativeEndpoint)
                     Dim content = Await response.Content.ReadAsStringAsync()
                     
                     If response.IsSuccessStatusCode Then
@@ -73,8 +89,9 @@ Namespace MistralAI.Net.Endpoints
         ''' <returns>The JSON response as a string.</returns>
         Protected Async Function PostAsync(endpoint As String, jsonContent As String) As Task(Of String)
             Try
+                Dim relativeEndpoint = endpoint.TrimStart("/"c)
                 Using content As New StringContent(jsonContent, Encoding.UTF8, "application/json")
-                Using response = Await _httpClient.PostAsync(endpoint.TrimStart("/"c), content)
+                Using response = Await _httpClient.PostAsync(relativeEndpoint, content)
                     Dim responseContent = Await response.Content.ReadAsStringAsync()
                     
                     If response.IsSuccessStatusCode Then

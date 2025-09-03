@@ -144,7 +144,7 @@ Namespace MistralAI.Net.Client
         ''' <param name="apiKey">The Mistral AI API key.</param>
         ''' <param name="baseUrl">The base URL for the API. Defaults to https://api.mistral.ai.</param>
         ''' <param name="httpClient">Optional HttpClient instance. If not provided, a new instance will be created.</param>
-        Public Sub New(apiKey As String, Optional baseUrl As String = "https://api.mistral.ai", Optional httpClient As HttpClient = Nothing)
+        Public Sub New(apiKey As String, Optional baseUrl As String = "https://api.mistral.ai/v1/", Optional httpClient As HttpClient = Nothing)
             If String.IsNullOrWhiteSpace(apiKey) Then
                 Throw New ArgumentException("API key cannot be null or empty.", NameOf(apiKey))
             End If
@@ -154,22 +154,22 @@ Namespace MistralAI.Net.Client
             End If
 
             _apiKey = apiKey
-            _baseUrl = baseUrl.TrimEnd("/")
+            _baseUrl = If(baseUrl.EndsWith("/"), baseUrl, baseUrl + "/")
             _httpClient = If(httpClient, New HttpClient())
 
             ' Initialize all endpoints
-            _chat = New MistralAI.Net.Endpoints.ChatEndpoint(_httpClient, apiKey, baseUrl)
-            _models = New MistralAI.Net.Endpoints.ModelsEndpoint(_httpClient, apiKey, baseUrl)
-            _embeddings = New MistralAI.Net.Endpoints.EmbeddingsEndpoint(_httpClient, apiKey, baseUrl)
-            _files = New MistralAI.Net.Endpoints.FilesEndpoint(_httpClient, apiKey, baseUrl)
-            ' _fineTuning = New MistralAI.Net.Endpoints.FineTuningEndpoint(_httpClient, apiKey, baseUrl)
-            _batch = New MistralAI.Net.Endpoints.BatchEndpoint(_httpClient, apiKey, baseUrl)
-            _agents = New MistralAI.Net.Endpoints.AgentsEndpoint(_httpClient, apiKey, baseUrl)
-            _audio = New MistralAI.Net.Endpoints.AudioEndpoint(_httpClient, apiKey, baseUrl)
-            _ocr = New MistralAI.Net.Endpoints.OcrEndpoint(_httpClient, apiKey, baseUrl)
-            _classifiers = New MistralAI.Net.Endpoints.ClassifiersEndpoint(_httpClient, apiKey, baseUrl)
-            _fim = New MistralAI.Net.Endpoints.FimEndpoint(_httpClient, apiKey, baseUrl)
-            _beta = New MistralAI.Net.Endpoints.BetaEndpoint(_httpClient, apiKey, baseUrl)
+            _chat = New MistralAI.Net.Endpoints.ChatEndpoint(_httpClient, apiKey, _baseUrl)
+            _models = New MistralAI.Net.Endpoints.ModelsEndpoint(_httpClient, apiKey, _baseUrl)
+            _embeddings = New MistralAI.Net.Endpoints.EmbeddingsEndpoint(_httpClient, apiKey, _baseUrl)
+            _files = New MistralAI.Net.Endpoints.FilesEndpoint(_httpClient, apiKey, _baseUrl)
+            ' _fineTuning = New MistralAI.Net.Endpoints.FineTuningEndpoint(_httpClient, apiKey, _baseUrl)
+            _batch = New MistralAI.Net.Endpoints.BatchEndpoint(_httpClient, apiKey, _baseUrl)
+            _agents = New MistralAI.Net.Endpoints.AgentsEndpoint(_httpClient, apiKey, _baseUrl)
+            _audio = New MistralAI.Net.Endpoints.AudioEndpoint(_httpClient, apiKey, _baseUrl)
+            _ocr = New MistralAI.Net.Endpoints.OcrEndpoint(_httpClient, apiKey, _baseUrl)
+            _classifiers = New MistralAI.Net.Endpoints.ClassifiersEndpoint(_httpClient, apiKey, _baseUrl)
+            _fim = New MistralAI.Net.Endpoints.FimEndpoint(_httpClient, apiKey, _baseUrl)
+            _beta = New MistralAI.Net.Endpoints.BetaEndpoint(_httpClient, apiKey, _baseUrl)
         End Sub
 
         ''' <summary>

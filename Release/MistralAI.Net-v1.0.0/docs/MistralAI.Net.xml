@@ -1,0 +1,3060 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+MistralAI.Net
+</name>
+</assembly>
+<members>
+<member name="T:MistralAI.Net.MistralAI.Net.Client.MistralClient">
+ <summary>
+ Main client for interacting with the Mistral AI API.
+ This class provides access to all Mistral AI endpoints and functionality.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Client.MistralClient.Chat">
+ <summary>
+ Gets the Chat endpoint for chat completion operations.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Client.MistralClient.Models">
+ <summary>
+ Gets the Models endpoint for model management operations.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Client.MistralClient.Embeddings">
+ <summary>
+ Gets the Embeddings endpoint for embedding operations.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Client.MistralClient.Files">
+ <summary>
+ Gets the Files endpoint for file management operations.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Client.MistralClient.Batch">
+ <summary>
+ Gets the Batch endpoint for batch processing operations.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Client.MistralClient.Agents">
+ <summary>
+ Gets the Agents endpoint for agent management operations.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Client.MistralClient.Audio">
+ <summary>
+ Gets the Audio endpoint for audio processing operations.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Client.MistralClient.Ocr">
+ <summary>
+ Gets the OCR endpoint for optical character recognition operations.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Client.MistralClient.Classifiers">
+ <summary>
+ Gets the Classifiers endpoint for classification operations.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Client.MistralClient.Fim">
+ <summary>
+ Gets the FIM (Fill-In-the-Middle) endpoint for code completion operations.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Client.MistralClient.Beta">
+ <summary>
+ Gets the Beta endpoint for experimental features.
+ </summary>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Client.MistralClient.#ctor(System.String,System.String,System.Net.Http.HttpClient)">
+ <summary>
+ Initializes a new instance of the MistralClient class.
+ </summary>
+ <param name="apiKey">The Mistral AI API key.</param>
+ <param name="baseUrl">The base URL for the API. Defaults to https://api.mistral.ai.</param>
+ <param name="httpClient">Optional HttpClient instance. If not provided, a new instance will be created.</param>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Client.MistralClient.Dispose">
+ <summary>
+ Releases all resources used by the MistralClient.
+ </summary>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Client.MistralClient.Dispose(System.Boolean)">
+ <summary>
+ Releases the unmanaged resources used by the MistralClient and optionally releases the managed resources.
+ </summary>
+ <param name="disposing">True to release both managed and unmanaged resources; False to release only unmanaged resources.</param>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Client.MistralClient.ApiKey">
+ <summary>
+ Gets the API key being used by this client.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Client.MistralClient.BaseUrl">
+ <summary>
+ Gets the base URL being used by this client.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Client.MistralClient.IsDisposed">
+ <summary>
+ Gets a value indicating whether this instance has been disposed.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Endpoints.AgentsEndpoint">
+ <summary>
+ Handles agent operations for the Mistral AI API.
+ </summary>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.AgentsEndpoint.#ctor(System.Net.Http.HttpClient,System.String,System.String)">
+ <summary>
+ Initializes a new instance of the AgentsEndpoint class.
+ </summary>
+ <param name="client">The HTTP client to use for requests.</param>
+ <param name="apiKey">The API key for authentication.</param>
+ <param name="baseUrl">The base URL for the API.</param>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.AgentsEndpoint.Create(MistralAI.Net.MistralAI.Net.Models.Agents.AgentRequest)">
+ <summary>
+ Creates a new agent.
+ </summary>
+ <param name="request">The agent creation request.</param>
+ <returns>Information about the created agent.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.AgentsEndpoint.CreateAsync(MistralAI.Net.MistralAI.Net.Models.Agents.AgentRequest)">
+ <summary>
+ Creates a new agent asynchronously.
+ </summary>
+ <param name="request">The agent creation request.</param>
+ <returns>Information about the created agent.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.AgentsEndpoint.List(System.Nullable{System.Int32},System.String,System.String,System.String)">
+ <summary>
+ Lists available agents.
+ </summary>
+ <param name="limit">Optional limit for the number of agents to return.</param>
+ <param name="order">Optional order for the results (asc or desc).</param>
+ <param name="after">Optional cursor for pagination.</param>
+ <param name="before">Optional cursor for pagination.</param>
+ <returns>List of agents.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.AgentsEndpoint.ListAsync(System.Nullable{System.Int32},System.String,System.String,System.String)">
+ <summary>
+ Lists available agents asynchronously.
+ </summary>
+ <param name="limit">Optional limit for the number of agents to return.</param>
+ <param name="order">Optional order for the results (asc or desc).</param>
+ <param name="after">Optional cursor for pagination.</param>
+ <param name="before">Optional cursor for pagination.</param>
+ <returns>List of agents.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.AgentsEndpoint.Retrieve(System.String)">
+ <summary>
+ Retrieves information about a specific agent.
+ </summary>
+ <param name="agentId">The ID of the agent.</param>
+ <returns>Information about the agent.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.AgentsEndpoint.RetrieveAsync(System.String)">
+ <summary>
+ Retrieves information about a specific agent asynchronously.
+ </summary>
+ <param name="agentId">The ID of the agent.</param>
+ <returns>Information about the agent.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.AgentsEndpoint.Update(System.String,MistralAI.Net.MistralAI.Net.Models.Agents.AgentUpdateRequest)">
+ <summary>
+ Updates an existing agent.
+ </summary>
+ <param name="agentId">The ID of the agent to update.</param>
+ <param name="request">The agent update request.</param>
+ <returns>Information about the updated agent.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.AgentsEndpoint.UpdateAsync(System.String,MistralAI.Net.MistralAI.Net.Models.Agents.AgentUpdateRequest)">
+ <summary>
+ Updates an existing agent asynchronously.
+ </summary>
+ <param name="agentId">The ID of the agent to update.</param>
+ <param name="request">The agent update request.</param>
+ <returns>Information about the updated agent.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.AgentsEndpoint.Delete(System.String)">
+ <summary>
+ Deletes an agent.
+ </summary>
+ <param name="agentId">The ID of the agent to delete.</param>
+ <returns>Deletion status.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.AgentsEndpoint.DeleteAsync(System.String)">
+ <summary>
+ Deletes an agent asynchronously.
+ </summary>
+ <param name="agentId">The ID of the agent to delete.</param>
+ <returns>Deletion status.</returns>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Endpoints.AudioEndpoint">
+ <summary>
+ Handles audio processing operations for the Mistral AI API.
+ </summary>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.AudioEndpoint.#ctor(System.Net.Http.HttpClient,System.String,System.String)">
+ <summary>
+ Initializes a new instance of the AudioEndpoint class.
+ </summary>
+ <param name="client">The HTTP client to use for requests.</param>
+ <param name="apiKey">The API key for authentication.</param>
+ <param name="baseUrl">The base URL for the API.</param>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.AudioEndpoint.Transcribe(MistralAI.Net.MistralAI.Net.Models.Audio.TranscriptionRequest)">
+ <summary>
+ Transcribes audio to text.
+ </summary>
+ <param name="request">The transcription request.</param>
+ <returns>The transcription result.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.AudioEndpoint.TranscribeAsync(MistralAI.Net.MistralAI.Net.Models.Audio.TranscriptionRequest)">
+ <summary>
+ Transcribes audio to text asynchronously.
+ </summary>
+ <param name="request">The transcription request.</param>
+ <returns>The transcription result.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.AudioEndpoint.Translate(MistralAI.Net.MistralAI.Net.Models.Audio.TranslationRequest)">
+ <summary>
+ Translates audio to English text.
+ </summary>
+ <param name="request">The translation request.</param>
+ <returns>The translation result.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.AudioEndpoint.TranslateAsync(MistralAI.Net.MistralAI.Net.Models.Audio.TranslationRequest)">
+ <summary>
+ Translates audio to English text asynchronously.
+ </summary>
+ <param name="request">The translation request.</param>
+ <returns>The translation result.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.AudioEndpoint.Speech(MistralAI.Net.MistralAI.Net.Models.Audio.SpeechRequest)">
+ <summary>
+ Generates speech from text.
+ </summary>
+ <param name="request">The speech generation request.</param>
+ <returns>The generated audio data.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.AudioEndpoint.SpeechAsync(MistralAI.Net.MistralAI.Net.Models.Audio.SpeechRequest)">
+ <summary>
+ Generates speech from text asynchronously.
+ </summary>
+ <param name="request">The speech generation request.</param>
+ <returns>The generated audio data.</returns>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Endpoints.BaseEndpoint">
+ <summary>
+ Base class for all API endpoints providing common functionality.
+ </summary>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BaseEndpoint.#ctor(System.Net.Http.HttpClient,System.String,System.String)">
+ <summary>
+ Initializes a new instance of the BaseEndpoint class.
+ </summary>
+ <param name="client">The HTTP client to use for requests.</param>
+ <param name="apiKey">The API key for authentication.</param>
+ <param name="baseUrl">The base URL for the API.</param>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BaseEndpoint.GetAsync(System.String)">
+ <summary>
+ Sends a GET request to the specified endpoint and returns the JSON response.
+ </summary>
+ <param name="endpoint">The API endpoint to call.</param>
+ <returns>The JSON response as a string.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BaseEndpoint.PostAsync(System.String,System.String)">
+ <summary>
+ Sends a POST request to the specified endpoint with JSON content.
+ </summary>
+ <param name="endpoint">The API endpoint to call.</param>
+ <param name="jsonContent">The JSON content to send.</param>
+ <returns>The JSON response as a string.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BaseEndpoint.DeleteAsync(System.String)">
+ <summary>
+ Sends a DELETE request to the specified endpoint.
+ </summary>
+ <param name="endpoint">The API endpoint to call.</param>
+ <returns>The JSON response as a string.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BaseEndpoint.PostMultipartAsync(System.String,System.Net.Http.MultipartFormDataContent)">
+ <summary>
+ Sends a POST request with multipart form data.
+ </summary>
+ <param name="endpoint">The API endpoint to call.</param>
+ <param name="content">The multipart form data content.</param>
+ <returns>The JSON response as a string.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BaseEndpoint.PostStreamAsync``1(System.String,System.String)">
+ <summary>
+ Sends a POST request for streaming responses.
+ </summary>
+ <typeparam name="T">The type to deserialize streaming chunks to.</typeparam>
+ <param name="endpoint">The API endpoint to call.</param>
+ <param name="jsonContent">The JSON content to send.</param>
+ <returns>An async enumerable of streaming response chunks.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BaseEndpoint.ParseServerSentEvents``1(System.Net.Http.HttpResponseMessage)">
+ <summary>
+ Parses Server-Sent Events from the HTTP response stream.
+ </summary>
+ <typeparam name="T">The type to deserialize each event to.</typeparam>
+ <param name="response">The HTTP response message.</param>
+ <returns>A list of parsed events.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BaseEndpoint.GetSerializerSettings">
+ <summary>
+ Gets the default JSON serializer settings.
+ </summary>
+ <returns>JsonSerializerSettings configured for the API.</returns>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Endpoints.BatchEndpoint">
+ <summary>
+ Batch API endpoint for creating and managing batch processing jobs.
+ </summary>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BatchEndpoint.#ctor(System.Net.Http.HttpClient,System.String,System.String)">
+ <summary>
+ Initializes a new instance of the BatchEndpoint class.
+ </summary>
+ <param name="httpClient">The HTTP client to use for requests.</param>
+ <param name="apiKey">The API key for authentication.</param>
+ <param name="baseUrl">The base URL for the API.</param>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BatchEndpoint.Create(MistralAI.Net.MistralAI.Net.Models.Batch.BatchRequest)">
+ <summary>
+ Creates a batch processing job.
+ </summary>
+ <param name="request">The batch job request.</param>
+ <returns>Information about the created batch job.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BatchEndpoint.CreateAsync(MistralAI.Net.MistralAI.Net.Models.Batch.BatchRequest)">
+ <summary>
+ Creates a batch processing job asynchronously.
+ </summary>
+ <param name="request">The batch job request.</param>
+ <returns>Information about the created batch job.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BatchEndpoint.List(System.String,System.Nullable{System.Int32})">
+ <summary>
+ Lists batch processing jobs.
+ </summary>
+ <param name="after">Optional cursor for pagination.</param>
+ <param name="limit">Optional limit for the number of jobs to return.</param>
+ <returns>List of batch jobs.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BatchEndpoint.ListAsync(System.String,System.Nullable{System.Int32})">
+ <summary>
+ Lists batch processing jobs asynchronously.
+ </summary>
+ <param name="after">Optional cursor for pagination.</param>
+ <param name="limit">Optional limit for the number of jobs to return.</param>
+ <returns>List of batch jobs.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BatchEndpoint.Retrieve(System.String)">
+ <summary>
+ Retrieves information about a specific batch job.
+ </summary>
+ <param name="batchId">The ID of the batch job.</param>
+ <returns>Information about the batch job.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BatchEndpoint.RetrieveAsync(System.String)">
+ <summary>
+ Retrieves information about a specific batch job asynchronously.
+ </summary>
+ <param name="batchId">The ID of the batch job.</param>
+ <returns>Information about the batch job.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BatchEndpoint.Cancel(System.String)">
+ <summary>
+ Cancels a batch processing job.
+ </summary>
+ <param name="batchId">The ID of the batch job to cancel.</param>
+ <returns>Information about the cancelled batch job.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BatchEndpoint.CancelAsync(System.String)">
+ <summary>
+ Cancels a batch processing job asynchronously.
+ </summary>
+ <param name="batchId">The ID of the batch job to cancel.</param>
+ <returns>Information about the cancelled batch job.</returns>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Endpoints.BetaEndpoint">
+ <summary>
+ Handles beta/experimental features for the Mistral AI API.
+ </summary>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BetaEndpoint.#ctor(System.Net.Http.HttpClient,System.String,System.String)">
+ <summary>
+ Initializes a new instance of the BetaEndpoint class.
+ </summary>
+ <param name="client">The HTTP client to use for requests.</param>
+ <param name="apiKey">The API key for authentication.</param>
+ <param name="baseUrl">The base URL for the API.</param>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BetaEndpoint.ListFeatures">
+ <summary>
+ Lists available beta features.
+ </summary>
+ <returns>List of beta features.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BetaEndpoint.ListFeaturesAsync">
+ <summary>
+ Lists available beta features asynchronously.
+ </summary>
+ <returns>List of beta features.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BetaEndpoint.GetFeature(System.String)">
+ <summary>
+ Gets information about a specific beta feature.
+ </summary>
+ <param name="featureId">The ID of the beta feature.</param>
+ <returns>Information about the beta feature.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BetaEndpoint.GetFeatureAsync(System.String)">
+ <summary>
+ Gets information about a specific beta feature asynchronously.
+ </summary>
+ <param name="featureId">The ID of the beta feature.</param>
+ <returns>Information about the beta feature.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BetaEndpoint.EnableFeature(System.String)">
+ <summary>
+ Enables a beta feature for the current user.
+ </summary>
+ <param name="featureId">The ID of the beta feature to enable.</param>
+ <returns>Result of the enable operation.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BetaEndpoint.EnableFeatureAsync(System.String)">
+ <summary>
+ Enables a beta feature for the current user asynchronously.
+ </summary>
+ <param name="featureId">The ID of the beta feature to enable.</param>
+ <returns>Result of the enable operation.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BetaEndpoint.DisableFeature(System.String)">
+ <summary>
+ Disables a beta feature for the current user.
+ </summary>
+ <param name="featureId">The ID of the beta feature to disable.</param>
+ <returns>Result of the disable operation.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BetaEndpoint.DisableFeatureAsync(System.String)">
+ <summary>
+ Disables a beta feature for the current user asynchronously.
+ </summary>
+ <param name="featureId">The ID of the beta feature to disable.</param>
+ <returns>Result of the disable operation.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BetaEndpoint.CallBetaApi``2(System.String,``0)">
+ <summary>
+ Executes a beta API call with experimental parameters.
+ </summary>
+ <typeparam name="TRequest">The request type.</typeparam>
+ <typeparam name="TResponse">The response type.</typeparam>
+ <param name="endpoint">The beta endpoint to call.</param>
+ <param name="request">The request object.</param>
+ <returns>The response from the beta API.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.BetaEndpoint.CallBetaApiAsync``2(System.String,``0)">
+ <summary>
+ Executes a beta API call with experimental parameters asynchronously.
+ </summary>
+ <typeparam name="TRequest">The request type.</typeparam>
+ <typeparam name="TResponse">The response type.</typeparam>
+ <param name="endpoint">The beta endpoint to call.</param>
+ <param name="request">The request object.</param>
+ <returns>The response from the beta API.</returns>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Endpoints.ChatEndpoint">
+ <summary>
+ Chat Completion API endpoint providing text generation capabilities.
+ </summary>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.ChatEndpoint.#ctor(System.Net.Http.HttpClient,System.String,System.String)">
+ <summary>
+ Initializes a new instance of the ChatEndpoint class.
+ </summary>
+ <param name="httpClient">The HTTP client to use for requests.</param>
+ <param name="apiKey">The API key for authentication.</param>
+ <param name="baseUrl">The base URL for the API.</param>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.ChatEndpoint.Create(MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionRequest)">
+ <summary>
+ Creates a chat completion synchronously.
+ </summary>
+ <param name="request">The chat completion request.</param>
+ <returns>The chat completion response.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.ChatEndpoint.CreateAsync(MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionRequest)">
+ <summary>
+ Creates a chat completion asynchronously.
+ </summary>
+ <param name="request">The chat completion request.</param>
+ <returns>A task that represents the asynchronous operation with the chat completion response.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.ChatEndpoint.CreateStreamAsync(MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionRequest)">
+ <summary>
+ Creates a streaming chat completion asynchronously.
+ </summary>
+ <param name="request">The chat completion request with streaming enabled.</param>
+ <returns>An async enumerable of chat completion chunks.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.ChatEndpoint.CreateAsync(System.String,System.Collections.Generic.List{MistralAI.Net.MistralAI.Net.Models.Chat.ChatMessage},System.Nullable{System.Double},System.Nullable{System.Int32})">
+ <summary>
+ Creates a chat completion with a simplified interface.
+ </summary>
+ <param name="model">The model to use.</param>
+ <param name="messages">The conversation messages.</param>
+ <param name="temperature">Optional temperature setting.</param>
+ <param name="maxTokens">Optional maximum tokens.</param>
+ <returns>The chat completion response.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.ChatEndpoint.CreateAsync(System.String,System.String,System.Nullable{System.Double},System.Nullable{System.Int32})">
+ <summary>
+ Creates a simple chat completion with a single user message.
+ </summary>
+ <param name="model">The model to use.</param>
+ <param name="userMessage">The user message.</param>
+ <param name="temperature">Optional temperature setting.</param>
+ <param name="maxTokens">Optional maximum tokens.</param>
+ <returns>The chat completion response.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.ChatEndpoint.CreateAsync(System.String,System.String,System.String,System.Nullable{System.Double},System.Nullable{System.Int32})">
+ <summary>
+ Creates a chat completion with system and user messages.
+ </summary>
+ <param name="model">The model to use.</param>
+ <param name="systemMessage">The system message.</param>
+ <param name="userMessage">The user message.</param>
+ <param name="temperature">Optional temperature setting.</param>
+ <param name="maxTokens">Optional maximum tokens.</param>
+ <returns>The chat completion response.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.ChatEndpoint.ValidateRequest(MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionRequest)">
+ <summary>
+ Validates the chat completion request.
+ </summary>
+ <param name="request">The request to validate.</param>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Endpoints.ClassifiersEndpoint">
+ <summary>
+ Handles text classification operations for the Mistral AI API.
+ </summary>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.ClassifiersEndpoint.#ctor(System.Net.Http.HttpClient,System.String,System.String)">
+ <summary>
+ Initializes a new instance of the ClassifiersEndpoint class.
+ </summary>
+ <param name="client">The HTTP client to use for requests.</param>
+ <param name="apiKey">The API key for authentication.</param>
+ <param name="baseUrl">The base URL for the API.</param>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.ClassifiersEndpoint.Classify(MistralAI.Net.MistralAI.Net.Models.Classifiers.ClassificationRequest)">
+ <summary>
+ Classifies text into categories.
+ </summary>
+ <param name="request">The classification request.</param>
+ <returns>The classification result.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.ClassifiersEndpoint.ClassifyAsync(MistralAI.Net.MistralAI.Net.Models.Classifiers.ClassificationRequest)">
+ <summary>
+ Classifies text into categories asynchronously.
+ </summary>
+ <param name="request">The classification request.</param>
+ <returns>The classification result.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.ClassifiersEndpoint.ClassifyText(System.String,System.String,System.Collections.Generic.List{System.String})">
+ <summary>
+ Convenience method to classify a single text.
+ </summary>
+ <param name="model">The model to use for classification.</param>
+ <param name="text">The text to classify.</param>
+ <param name="categories">List of possible categories.</param>
+ <returns>The classification result.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.ClassifiersEndpoint.ClassifyTextAsync(System.String,System.String,System.Collections.Generic.List{System.String})">
+ <summary>
+ Convenience method to classify a single text asynchronously.
+ </summary>
+ <param name="model">The model to use for classification.</param>
+ <param name="text">The text to classify.</param>
+ <param name="categories">List of possible categories.</param>
+ <returns>The classification result.</returns>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Endpoints.EmbeddingsEndpoint">
+ <summary>
+ Embeddings API endpoint for creating text embeddings.
+ </summary>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.EmbeddingsEndpoint.#ctor(System.Net.Http.HttpClient,System.String,System.String)">
+ <summary>
+ Initializes a new instance of the EmbeddingsEndpoint class.
+ </summary>
+ <param name="httpClient">The HttpClient to use for API requests.</param>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.EmbeddingsEndpoint.Create(MistralAI.Net.MistralAI.Net.Models.Embeddings.EmbeddingRequest)">
+ <summary>
+ Creates embeddings for the specified input synchronously.
+ </summary>
+ <param name="request">The embedding request.</param>
+ <returns>The embedding response.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.EmbeddingsEndpoint.CreateAsync(MistralAI.Net.MistralAI.Net.Models.Embeddings.EmbeddingRequest)">
+ <summary>
+ Creates embeddings for the specified input asynchronously.
+ </summary>
+ <param name="request">The embedding request.</param>
+ <returns>A task that represents the asynchronous operation with the embedding response.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.EmbeddingsEndpoint.CreateAsync(System.String,System.String,System.String)">
+ <summary>
+ Convenience method to create embeddings for a single text input.
+ </summary>
+ <param name="model">The model to use for embedding.</param>
+ <param name="input">The input text to embed.</param>
+ <param name="encodingFormat">The encoding format (optional).</param>
+ <returns>A task that represents the asynchronous operation with the embedding response.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.EmbeddingsEndpoint.CreateAsync(System.String,System.Collections.Generic.List{System.String},System.String)">
+ <summary>
+ Convenience method to create embeddings for multiple text inputs.
+ </summary>
+ <param name="model">The model to use for embedding.</param>
+ <param name="inputs">The input texts to embed.</param>
+ <param name="encodingFormat">The encoding format (optional).</param>
+ <returns>A task that represents the asynchronous operation with the embedding response.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.EmbeddingsEndpoint.ValidateRequest(MistralAI.Net.MistralAI.Net.Models.Embeddings.EmbeddingRequest)">
+ <summary>
+ Validates the embedding request.
+ </summary>
+ <param name="request">The request to validate.</param>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Endpoints.FilesEndpoint">
+ <summary>
+ Files API endpoint for file upload, management, and retrieval operations.
+ </summary>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.FilesEndpoint.#ctor(System.Net.Http.HttpClient,System.String,System.String)">
+ <summary>
+ Initializes a new instance of the FilesEndpoint class.
+ </summary>
+ <param name="httpClient">The HTTP client to use for requests.</param>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.FilesEndpoint.Upload(System.String,System.String)">
+ <summary>
+ Uploads a file to be used for fine-tuning or other operations.
+ </summary>
+ <param name="filePath">Path to the file to upload.</param>
+ <param name="purpose">The purpose of the file (e.g., "fine-tune").</param>
+ <returns>Information about the uploaded file.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.FilesEndpoint.UploadAsync(System.String,System.String)">
+ <summary>
+ Uploads a file asynchronously to be used for fine-tuning or other operations.
+ </summary>
+ <param name="filePath">Path to the file to upload.</param>
+ <param name="purpose">The purpose of the file (e.g., "fine-tune").</param>
+ <returns>Information about the uploaded file.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.FilesEndpoint.List">
+ <summary>
+ Lists all uploaded files.
+ </summary>
+ <returns>List of uploaded files.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.FilesEndpoint.ListAsync">
+ <summary>
+ Lists all uploaded files asynchronously.
+ </summary>
+ <returns>List of uploaded files.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.FilesEndpoint.Retrieve(System.String)">
+ <summary>
+ Retrieves information about a specific file.
+ </summary>
+ <param name="fileId">The ID of the file to retrieve.</param>
+ <returns>Information about the file.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.FilesEndpoint.RetrieveAsync(System.String)">
+ <summary>
+ Retrieves information about a specific file asynchronously.
+ </summary>
+ <param name="fileId">The ID of the file to retrieve.</param>
+ <returns>Information about the file.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.FilesEndpoint.Delete(System.String)">
+ <summary>
+ Deletes a file.
+ </summary>
+ <param name="fileId">The ID of the file to delete.</param>
+ <returns>Deletion status.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.FilesEndpoint.DeleteAsync(System.String)">
+ <summary>
+ Deletes a file asynchronously.
+ </summary>
+ <param name="fileId">The ID of the file to delete.</param>
+ <returns>Deletion status.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.FilesEndpoint.Download(System.String)">
+ <summary>
+ Downloads the content of a file.
+ </summary>
+ <param name="fileId">The ID of the file to download.</param>
+ <returns>File content as byte array.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.FilesEndpoint.DownloadAsync(System.String)">
+ <summary>
+ Downloads the content of a file asynchronously.
+ </summary>
+ <param name="fileId">The ID of the file to download.</param>
+ <returns>File content as byte array.</returns>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Endpoints.FimEndpoint">
+ <summary>
+ Handles Fill-in-the-Middle (FIM) code completion operations for the Mistral AI API.
+ </summary>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.FimEndpoint.#ctor(System.Net.Http.HttpClient,System.String,System.String)">
+ <summary>
+ Initializes a new instance of the FimEndpoint class.
+ </summary>
+ <param name="client">The HTTP client to use for requests.</param>
+ <param name="apiKey">The API key for authentication.</param>
+ <param name="baseUrl">The base URL for the API.</param>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.FimEndpoint.Complete(MistralAI.Net.MistralAI.Net.Models.Fim.FimRequest)">
+ <summary>
+ Performs fill-in-the-middle code completion.
+ </summary>
+ <param name="request">The FIM completion request.</param>
+ <returns>The completion result.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.FimEndpoint.CompleteAsync(MistralAI.Net.MistralAI.Net.Models.Fim.FimRequest)">
+ <summary>
+ Performs fill-in-the-middle code completion asynchronously.
+ </summary>
+ <param name="request">The FIM completion request.</param>
+ <returns>The completion result.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.FimEndpoint.CompleteCode(System.String,System.String,System.String,System.Nullable{System.Int32})">
+ <summary>
+ Convenience method for simple code completion.
+ </summary>
+ <param name="model">The model to use.</param>
+ <param name="prefix">The code before the cursor.</param>
+ <param name="suffix">The code after the cursor.</param>
+ <param name="maxTokens">Maximum tokens to generate.</param>
+ <returns>The completion result.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.FimEndpoint.CompleteCodeAsync(System.String,System.String,System.String,System.Nullable{System.Int32})">
+ <summary>
+ Convenience method for simple code completion asynchronously.
+ </summary>
+ <param name="model">The model to use.</param>
+ <param name="prefix">The code before the cursor.</param>
+ <param name="suffix">The code after the cursor.</param>
+ <param name="maxTokens">Maximum tokens to generate.</param>
+ <returns>The completion result.</returns>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Endpoints.ModelsEndpoint">
+ <summary>
+ Models API endpoint for managing and retrieving model information.
+ </summary>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.ModelsEndpoint.#ctor(System.Net.Http.HttpClient,System.String,System.String)">
+ <summary>
+ Initializes a new instance of the ModelsEndpoint class.
+ </summary>
+ <param name="httpClient">The HTTP client to use for requests.</param>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.ModelsEndpoint.List">
+ <summary>
+ Lists all available models synchronously.
+ </summary>
+ <returns>A list of available models.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.ModelsEndpoint.ListAsync">
+ <summary>
+ Lists all available models asynchronously.
+ </summary>
+ <returns>A task that represents the asynchronous operation with a list of available models.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.ModelsEndpoint.Retrieve(System.String)">
+ <summary>
+ Retrieves information about a specific model synchronously.
+ </summary>
+ <param name="modelId">The ID of the model to retrieve.</param>
+ <returns>Information about the specified model.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.ModelsEndpoint.RetrieveAsync(System.String)">
+ <summary>
+ Retrieves information about a specific model asynchronously.
+ </summary>
+ <param name="modelId">The ID of the model to retrieve.</param>
+ <returns>A task that represents the asynchronous operation with information about the specified model.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.ModelsEndpoint.Delete(System.String)">
+ <summary>
+ Deletes a fine-tuned model synchronously.
+ </summary>
+ <param name="modelId">The ID of the model to delete.</param>
+ <returns>Deletion confirmation response.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.ModelsEndpoint.DeleteAsync(System.String)">
+ <summary>
+ Deletes a fine-tuned model asynchronously.
+ </summary>
+ <param name="modelId">The ID of the model to delete.</param>
+ <returns>A task that represents the asynchronous operation with deletion confirmation response.</returns>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Endpoints.ModelDeletionResponse">
+ <summary>
+ Response object for model deletion operations.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Endpoints.ModelDeletionResponse.Id">
+ <summary>
+ The ID of the deleted model.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Endpoints.ModelDeletionResponse.Object">
+ <summary>
+ The object type (always "model").
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Endpoints.ModelDeletionResponse.Deleted">
+ <summary>
+ Whether the model was successfully deleted.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Endpoints.OcrEndpoint">
+ <summary>
+ Handles optical character recognition (OCR) operations for the Mistral AI API.
+ </summary>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.OcrEndpoint.#ctor(System.Net.Http.HttpClient,System.String,System.String)">
+ <summary>
+ Initializes a new instance of the OcrEndpoint class.
+ </summary>
+ <param name="client">The HTTP client to use for requests.</param>
+ <param name="apiKey">The API key for authentication.</param>
+ <param name="baseUrl">The base URL for the API.</param>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.OcrEndpoint.ExtractText(MistralAI.Net.MistralAI.Net.Models.Ocr.OcrRequest)">
+ <summary>
+ Extracts text from an image.
+ </summary>
+ <param name="request">The OCR request.</param>
+ <returns>The extracted text.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.OcrEndpoint.ExtractTextAsync(MistralAI.Net.MistralAI.Net.Models.Ocr.OcrRequest)">
+ <summary>
+ Extracts text from an image asynchronously.
+ </summary>
+ <param name="request">The OCR request.</param>
+ <returns>The extracted text.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.OcrEndpoint.ExtractTextFromBase64(System.String,System.String,System.String)">
+ <summary>
+ Extracts text from an image using a base64-encoded image.
+ </summary>
+ <param name="model">The model to use for OCR.</param>
+ <param name="base64Image">The base64-encoded image data.</param>
+ <param name="language">Optional language hint.</param>
+ <returns>The extracted text.</returns>
+</member>
+<member name="M:MistralAI.Net.MistralAI.Net.Endpoints.OcrEndpoint.ExtractTextFromBase64Async(System.String,System.String,System.String)">
+ <summary>
+ Extracts text from an image using a base64-encoded image asynchronously.
+ </summary>
+ <param name="model">The model to use for OCR.</param>
+ <param name="base64Image">The base64-encoded image data.</param>
+ <param name="language">Optional language hint.</param>
+ <returns>The extracted text.</returns>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Agents.AgentRequest">
+ <summary>
+ Request for creating an agent.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentRequest.Model">
+ <summary>
+ ID of the model to use.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentRequest.Name">
+ <summary>
+ The name of the agent.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentRequest.Description">
+ <summary>
+ The description of the agent.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentRequest.Instructions">
+ <summary>
+ The system instruction that the agent uses.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentRequest.Tools">
+ <summary>
+ A list of tool enabled on the agent.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentRequest.FileIds">
+ <summary>
+ A list of file IDs attached to this agent.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentRequest.Metadata">
+ <summary>
+ Set of 16 key-value pairs that can be attached to an object.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Agents.AgentUpdateRequest">
+ <summary>
+ Request for updating an agent.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentUpdateRequest.Model">
+ <summary>
+ ID of the model to use.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentUpdateRequest.Name">
+ <summary>
+ The name of the agent.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentUpdateRequest.Description">
+ <summary>
+ The description of the agent.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentUpdateRequest.Instructions">
+ <summary>
+ The system instruction that the agent uses.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentUpdateRequest.Tools">
+ <summary>
+ A list of tool enabled on the agent.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentUpdateRequest.FileIds">
+ <summary>
+ A list of file IDs attached to this agent.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentUpdateRequest.Metadata">
+ <summary>
+ Set of 16 key-value pairs that can be attached to an object.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Agents.Agent">
+ <summary>
+ Represents an agent.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.Agent.Id">
+ <summary>
+ The identifier, which can be referenced in API endpoints.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.Agent.Object">
+ <summary>
+ The object type, which is always "agent".
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.Agent.CreatedAt">
+ <summary>
+ The Unix timestamp (in seconds) for when the agent was created.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.Agent.Name">
+ <summary>
+ The name of the agent.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.Agent.Description">
+ <summary>
+ The description of the agent.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.Agent.Model">
+ <summary>
+ ID of the model to use.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.Agent.Instructions">
+ <summary>
+ The system instruction that the agent uses.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.Agent.Tools">
+ <summary>
+ A list of tool enabled on the agent.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.Agent.FileIds">
+ <summary>
+ A list of file IDs attached to this agent.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.Agent.Metadata">
+ <summary>
+ Set of 16 key-value pairs that can be attached to an object.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Agents.AgentTool">
+ <summary>
+ Represents a tool that can be used by an agent.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentTool.Type">
+ <summary>
+ The type of tool being defined.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentTool.Function">
+ <summary>
+ The function definition for function tools.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Agents.AgentFunction">
+ <summary>
+ Represents a function that can be called by an agent.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentFunction.Description">
+ <summary>
+ A description of what the function does.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentFunction.Name">
+ <summary>
+ The name of the function to be called.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentFunction.Parameters">
+ <summary>
+ The parameters the functions accepts, described as a JSON Schema object.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Agents.AgentList">
+ <summary>
+ Response containing a list of agents.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentList.Object">
+ <summary>
+ The object type, always "list".
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentList.Data">
+ <summary>
+ List of agents.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentList.FirstId">
+ <summary>
+ The first ID in the current page of results.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentList.LastId">
+ <summary>
+ The last ID in the current page of results.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentList.HasMore">
+ <summary>
+ Whether there are more results available.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Agents.AgentDeleteResponse">
+ <summary>
+ Response from an agent deletion operation.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentDeleteResponse.Id">
+ <summary>
+ The ID of the deleted agent.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentDeleteResponse.Object">
+ <summary>
+ The object type, always "agent.deleted".
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Agents.AgentDeleteResponse.Deleted">
+ <summary>
+ Whether the agent was successfully deleted.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Audio.TranscriptionRequest">
+ <summary>
+ Request for audio transcription.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Audio.TranscriptionRequest.FilePath">
+ <summary>
+ Path to the audio file to transcribe.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Audio.TranscriptionRequest.Model">
+ <summary>
+ ID of the model to use for transcription.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Audio.TranscriptionRequest.Language">
+ <summary>
+ The language of the input audio (optional).
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Audio.TranscriptionRequest.Prompt">
+ <summary>
+ An optional text to guide the model's style or continue a previous audio segment.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Audio.TranscriptionRequest.Temperature">
+ <summary>
+ The sampling temperature, between 0 and 1 (optional).
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Audio.TranscriptionResponse">
+ <summary>
+ Response from audio transcription.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Audio.TranscriptionResponse.Text">
+ <summary>
+ The transcribed text.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Audio.TranslationRequest">
+ <summary>
+ Request for audio translation.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Audio.TranslationRequest.FilePath">
+ <summary>
+ Path to the audio file to translate.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Audio.TranslationRequest.Model">
+ <summary>
+ ID of the model to use for translation.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Audio.TranslationRequest.Prompt">
+ <summary>
+ An optional text to guide the model's style or continue a previous audio segment.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Audio.TranslationRequest.Temperature">
+ <summary>
+ The sampling temperature, between 0 and 1 (optional).
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Audio.TranslationResponse">
+ <summary>
+ Response from audio translation.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Audio.TranslationResponse.Text">
+ <summary>
+ The translated text.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Audio.SpeechRequest">
+ <summary>
+ Request for speech generation.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Audio.SpeechRequest.Model">
+ <summary>
+ ID of the model to use for speech generation.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Audio.SpeechRequest.Input">
+ <summary>
+ The text to generate audio for.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Audio.SpeechRequest.Voice">
+ <summary>
+ The voice to use when generating the audio.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Audio.SpeechRequest.ResponseFormat">
+ <summary>
+ The format to audio in (optional).
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Audio.SpeechRequest.Speed">
+ <summary>
+ The speed of the generated audio (optional).
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Batch.BatchRequest">
+ <summary>
+ Request for creating a batch processing job.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.BatchRequest.InputFileId">
+ <summary>
+ The ID of an uploaded file that contains requests for the new batch.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.BatchRequest.Endpoint">
+ <summary>
+ The endpoint to be used for all requests in the batch.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.BatchRequest.CompletionWindow">
+ <summary>
+ The time frame within which the batch should be processed.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.BatchRequest.Metadata">
+ <summary>
+ Optional custom metadata for the batch.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Batch.Batch">
+ <summary>
+ Represents a batch processing job.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.Batch.Id">
+ <summary>
+ The batch identifier.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.Batch.Object">
+ <summary>
+ The object type, which is always "batch".
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.Batch.Endpoint">
+ <summary>
+ The endpoint to be used for all requests in the batch.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.Batch.Errors">
+ <summary>
+ Set of 16 key-value pairs that can be attached to an object.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.Batch.InputFileId">
+ <summary>
+ The ID of the input file for the batch.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.Batch.CompletionWindow">
+ <summary>
+ The time frame within which the batch should be processed.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.Batch.Status">
+ <summary>
+ The current status of the batch.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.Batch.OutputFileId">
+ <summary>
+ The ID of the file containing the outputs of successfully executed requests.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.Batch.ErrorFileId">
+ <summary>
+ The ID of the file containing the outputs of requests with errors.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.Batch.CreatedAt">
+ <summary>
+ The Unix timestamp (in seconds) for when the batch was created.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.Batch.InProgressAt">
+ <summary>
+ The Unix timestamp (in seconds) for when the batch started processing.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.Batch.ExpiresAt">
+ <summary>
+ The Unix timestamp (in seconds) for when the batch will expire.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.Batch.FinalizingAt">
+ <summary>
+ The Unix timestamp (in seconds) for when the batch started finalizing.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.Batch.CompletedAt">
+ <summary>
+ The Unix timestamp (in seconds) for when the batch was completed.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.Batch.FailedAt">
+ <summary>
+ The Unix timestamp (in seconds) for when the batch failed.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.Batch.CancelledAt">
+ <summary>
+ The Unix timestamp (in seconds) for when the batch was cancelled.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.Batch.RequestCounts">
+ <summary>
+ The request counts for different statuses within the batch.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.Batch.Metadata">
+ <summary>
+ Set of 16 key-value pairs that can be attached to an object.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Batch.BatchErrors">
+ <summary>
+ Error information for batch processing.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.BatchErrors.Object">
+ <summary>
+ The object type.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.BatchErrors.Data">
+ <summary>
+ List of errors that occurred during batch processing.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Batch.BatchError">
+ <summary>
+ Represents an error that occurred during batch processing.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.BatchError.Code">
+ <summary>
+ An error code identifying the error type.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.BatchError.Message">
+ <summary>
+ A human-readable message providing more details about the error.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.BatchError.Param">
+ <summary>
+ The name of the parameter that caused the error, if applicable.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.BatchError.Line">
+ <summary>
+ The line number of the input file where the error occurred, if applicable.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Batch.BatchRequestCounts">
+ <summary>
+ Request counts for different statuses within a batch.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.BatchRequestCounts.Total">
+ <summary>
+ Total number of requests in the batch.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.BatchRequestCounts.Completed">
+ <summary>
+ Number of requests that have been completed successfully.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.BatchRequestCounts.Failed">
+ <summary>
+ Number of requests that have failed.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Batch.BatchList">
+ <summary>
+ Response containing a list of batch jobs.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.BatchList.Object">
+ <summary>
+ The object type, always "list".
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.BatchList.Data">
+ <summary>
+ List of batch jobs.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.BatchList.FirstId">
+ <summary>
+ The first ID in the current page of results.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.BatchList.LastId">
+ <summary>
+ The last ID in the current page of results.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Batch.BatchList.HasMore">
+ <summary>
+ Whether there are more results available.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Beta.BetaFeature">
+ <summary>
+ Represents a beta feature.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Beta.BetaFeature.Id">
+ <summary>
+ The unique identifier of the beta feature.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Beta.BetaFeature.Name">
+ <summary>
+ The name of the beta feature.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Beta.BetaFeature.Description">
+ <summary>
+ Description of the beta feature.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Beta.BetaFeature.Status">
+ <summary>
+ The current status of the beta feature.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Beta.BetaFeature.Enabled">
+ <summary>
+ Whether the feature is currently enabled for the user.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Beta.BetaFeature.Version">
+ <summary>
+ The version of the beta feature.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Beta.BetaFeature.DocumentationUrl">
+ <summary>
+ Documentation URL for the beta feature.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Beta.BetaFeature.ExpectedGraduationDate">
+ <summary>
+ Expected graduation date from beta to stable.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Beta.BetaFeature.FeedbackUrl">
+ <summary>
+ Feedback URL for reporting issues or suggestions.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Beta.BetaFeature.Capabilities">
+ <summary>
+ List of capabilities provided by this beta feature.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Beta.BetaFeature.Limitations">
+ <summary>
+ Known limitations of the beta feature.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Beta.BetaFeatureList">
+ <summary>
+ Response containing a list of beta features.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Beta.BetaFeatureList.Object">
+ <summary>
+ The object type, always "list".
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Beta.BetaFeatureList.Data">
+ <summary>
+ List of beta features.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Beta.BetaFeatureList.TotalCount">
+ <summary>
+ Total number of beta features available.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Beta.BetaFeatureToggleResponse">
+ <summary>
+ Response from enabling or disabling a beta feature.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Beta.BetaFeatureToggleResponse.FeatureId">
+ <summary>
+ The ID of the beta feature that was toggled.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Beta.BetaFeatureToggleResponse.Enabled">
+ <summary>
+ Whether the feature is now enabled.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Beta.BetaFeatureToggleResponse.ChangedAt">
+ <summary>
+ Timestamp when the change was made.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Beta.BetaFeatureToggleResponse.Message">
+ <summary>
+ Success message.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Chat.ChatMessage">
+ <summary>
+ Represents a chat message in a conversation.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatMessage.Role">
+ <summary>
+ The role of the message author (system, user, assistant, or tool).
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatMessage.Content">
+ <summary>
+ The content of the message.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatMessage.Name">
+ <summary>
+ Optional name of the message author.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatMessage.ToolCalls">
+ <summary>
+ Tool calls made by the assistant (only for assistant messages).
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatMessage.ToolCallId">
+ <summary>
+ Tool call ID (only for tool messages).
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Chat.ToolCall">
+ <summary>
+ Represents a tool call made by the assistant.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ToolCall.Id">
+ <summary>
+ The ID of the tool call.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ToolCall.Type">
+ <summary>
+ The type of the tool call (always "function").
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ToolCall.Function">
+ <summary>
+ The function details of the tool call.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Chat.FunctionCall">
+ <summary>
+ Represents a function call within a tool call.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.FunctionCall.Name">
+ <summary>
+ The name of the function to call.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.FunctionCall.Arguments">
+ <summary>
+ The arguments to pass to the function, as a JSON string.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionRequest">
+ <summary>
+ Request object for chat completions.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionRequest.Model">
+ <summary>
+ ID of the model to use.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionRequest.Messages">
+ <summary>
+ The messages to generate completions for.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionRequest.Temperature">
+ <summary>
+ What sampling temperature to use (0.0 to 2.0).
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionRequest.TopP">
+ <summary>
+ Nucleus sampling probability (0.0 to 1.0).
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionRequest.MaxTokens">
+ <summary>
+ The maximum number of tokens to generate.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionRequest.Stream">
+ <summary>
+ Whether to stream back partial progress.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionRequest.Stop">
+ <summary>
+ Stop generation if these tokens are detected.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionRequest.RandomSeed">
+ <summary>
+ The seed to use for random sampling.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionRequest.ResponseFormat">
+ <summary>
+ Response format specification.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionRequest.Tools">
+ <summary>
+ A list of tools available for the model to call.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionRequest.ToolChoice">
+ <summary>
+ Controls which tools are called.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionRequest.PresencePenalty">
+ <summary>
+ Presence penalty (-2.0 to 2.0).
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionRequest.FrequencyPenalty">
+ <summary>
+ Frequency penalty (-2.0 to 2.0).
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionRequest.N">
+ <summary>
+ Number of completions to return for each request.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionRequest.Prediction">
+ <summary>
+ Prediction settings for speculative generation.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionRequest.ParallelToolCalls">
+ <summary>
+ Whether to enable parallel tool calls.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionRequest.PromptMode">
+ <summary>
+ Prompt mode setting.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionRequest.SafePrompt">
+ <summary>
+ Whether to inject a safety prompt.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionResponse">
+ <summary>
+ Response object for chat completions.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionResponse.Id">
+ <summary>
+ A unique identifier for the chat completion.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionResponse.Object">
+ <summary>
+ The object type, always "chat.completion".
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionResponse.Created">
+ <summary>
+ The Unix timestamp of when the completion was created.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionResponse.Model">
+ <summary>
+ The model used for the completion.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionResponse.Choices">
+ <summary>
+ A list of completion choices.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionResponse.Usage">
+ <summary>
+ Usage statistics for the completion request.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionChoice">
+ <summary>
+ Represents a completion choice in the response.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionChoice.Index">
+ <summary>
+ The index of this choice in the list.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionChoice.Message">
+ <summary>
+ The message generated by the model.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionChoice.FinishReason">
+ <summary>
+ The reason the model stopped generating tokens.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Chat.UsageInfo">
+ <summary>
+ Usage statistics for API requests.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.UsageInfo.PromptTokens">
+ <summary>
+ Number of tokens in the prompt.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.UsageInfo.CompletionTokens">
+ <summary>
+ Number of tokens in the completion.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.UsageInfo.TotalTokens">
+ <summary>
+ Total number of tokens used.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionChunk">
+ <summary>
+ Represents a streaming chat completion chunk.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionChunk.Id">
+ <summary>
+ A unique identifier for the chat completion.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionChunk.Object">
+ <summary>
+ The object type, always "chat.completion.chunk".
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionChunk.Created">
+ <summary>
+ The Unix timestamp of when the completion was created.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionChunk.Model">
+ <summary>
+ The model used for the completion.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionChunk.Choices">
+ <summary>
+ A list of completion choices for this chunk.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionStreamChoice">
+ <summary>
+ Represents a choice in a streaming chat completion.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionStreamChoice.Index">
+ <summary>
+ The index of this choice in the list.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionStreamChoice.Delta">
+ <summary>
+ The delta content for this chunk.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatCompletionStreamChoice.FinishReason">
+ <summary>
+ The reason the model stopped generating tokens.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Chat.ChatMessageDelta">
+ <summary>
+ Represents a delta message in streaming responses.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatMessageDelta.Role">
+ <summary>
+ The role of the message author (if this is the first chunk).
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatMessageDelta.Content">
+ <summary>
+ The content delta for this chunk.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ChatMessageDelta.ToolCalls">
+ <summary>
+ Tool call deltas (if any).
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Chat.ToolCallDelta">
+ <summary>
+ Represents a tool call delta in streaming responses.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ToolCallDelta.Index">
+ <summary>
+ The index of this tool call.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ToolCallDelta.Id">
+ <summary>
+ The ID of the tool call.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ToolCallDelta.Type">
+ <summary>
+ The type of the tool call.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.ToolCallDelta.Function">
+ <summary>
+ The function call delta.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Chat.FunctionCallDelta">
+ <summary>
+ Represents a function call delta in streaming responses.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.FunctionCallDelta.Name">
+ <summary>
+ The name of the function (if this is the first chunk).
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Chat.FunctionCallDelta.Arguments">
+ <summary>
+ The arguments delta for this chunk.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Classifiers.ClassificationRequest">
+ <summary>
+ Request for text classification.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Classifiers.ClassificationRequest.Model">
+ <summary>
+ ID of the model to use for classification.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Classifiers.ClassificationRequest.Input">
+ <summary>
+ The text to classify.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Classifiers.ClassificationRequest.Categories">
+ <summary>
+ List of possible categories to classify into.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Classifiers.ClassificationRequest.MaxCategories">
+ <summary>
+ The maximum number of categories to return (optional).
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Classifiers.ClassificationRequest.MinConfidence">
+ <summary>
+ The minimum confidence threshold (optional).
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Classifiers.ClassificationResponse">
+ <summary>
+ Response from text classification.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Classifiers.ClassificationResponse.Classifications">
+ <summary>
+ List of classification results.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Classifiers.ClassificationResponse.Model">
+ <summary>
+ The model used for classification.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Classifiers.ClassificationResponse.Input">
+ <summary>
+ The original input text.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Classifiers.Classification">
+ <summary>
+ Represents a single classification result.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Classifiers.Classification.Category">
+ <summary>
+ The predicted category.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Classifiers.Classification.Confidence">
+ <summary>
+ The confidence score for this classification (0-1).
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Classifiers.Classification.Rank">
+ <summary>
+ The ranking of this classification among all results.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.ResponseFormat">
+ <summary>
+ Represents response format specification for structured outputs.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.ResponseFormat.Type">
+ <summary>
+ The type of response format (e.g., "json_object").
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.ResponseFormat.Schema">
+ <summary>
+ JSON schema for structured output.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Tool">
+ <summary>
+ Represents a tool that can be called by the model.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Tool.Type">
+ <summary>
+ The type of the tool (always "function").
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Tool.Function">
+ <summary>
+ Function definition for the tool.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.ToolFunction">
+ <summary>
+ Represents a function definition for a tool.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.ToolFunction.Name">
+ <summary>
+ The name of the function.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.ToolFunction.Description">
+ <summary>
+ A description of what the function does.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.ToolFunction.Parameters">
+ <summary>
+ The parameters the function accepts.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Prediction">
+ <summary>
+ Represents prediction settings for speculative generation.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Prediction.Type">
+ <summary>
+ The type of prediction.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Prediction.Content">
+ <summary>
+ Content for the prediction.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.ModelInfo">
+ <summary>
+ Represents a model available in the API.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.ModelInfo.Id">
+ <summary>
+ The model identifier.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.ModelInfo.Object">
+ <summary>
+ The object type (always "model").
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.ModelInfo.Created">
+ <summary>
+ The Unix timestamp of when the model was created.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.ModelInfo.OwnedBy">
+ <summary>
+ The organization that owns the model.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.ModelInfo.Capabilities">
+ <summary>
+ Model capabilities.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.ModelCapabilities">
+ <summary>
+ Represents the capabilities of a model.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.ModelCapabilities.CompletionChat">
+ <summary>
+ Whether the model supports completion.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.ModelCapabilities.Embeddings">
+ <summary>
+ Whether the model supports embeddings.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.ModelCapabilities.FunctionCalling">
+ <summary>
+ Whether the model supports function calling.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.ModelCapabilities.FineTuning">
+ <summary>
+ Whether the model supports fine-tuning.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.ModelList">
+ <summary>
+ List response for models.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.ModelList.Object">
+ <summary>
+ The object type (always "list").
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.ModelList.Data">
+ <summary>
+ List of available models.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Embeddings.EmbeddingRequest">
+ <summary>
+ Request object for creating embeddings.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Embeddings.EmbeddingRequest.Model">
+ <summary>
+ ID of the model to use for embeddings.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Embeddings.EmbeddingRequest.Input">
+ <summary>
+ Input text or list of texts to embed.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Embeddings.EmbeddingRequest.EncodingFormat">
+ <summary>
+ The format to return embeddings in.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Embeddings.EmbeddingResponse">
+ <summary>
+ Response object for embedding requests.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Embeddings.EmbeddingResponse.Object">
+ <summary>
+ The object type (always "list").
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Embeddings.EmbeddingResponse.Data">
+ <summary>
+ List of embedding data.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Embeddings.EmbeddingResponse.Model">
+ <summary>
+ The model used for generating embeddings.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Embeddings.EmbeddingResponse.Usage">
+ <summary>
+ Usage statistics for the embedding request.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Embeddings.EmbeddingData">
+ <summary>
+ Represents individual embedding data.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Embeddings.EmbeddingData.Object">
+ <summary>
+ The object type (always "embedding").
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Embeddings.EmbeddingData.Embedding">
+ <summary>
+ The embedding vector.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Embeddings.EmbeddingData.Index">
+ <summary>
+ The index of this embedding in the request.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Embeddings.EmbeddingUsage">
+ <summary>
+ Usage statistics for embedding requests.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Embeddings.EmbeddingUsage.PromptTokens">
+ <summary>
+ Number of tokens in the prompt.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Embeddings.EmbeddingUsage.TotalTokens">
+ <summary>
+ Total number of tokens used.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Files.FileObject">
+ <summary>
+ Represents a file object in the Mistral AI system.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Files.FileObject.Id">
+ <summary>
+ The unique identifier of the file.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Files.FileObject.Filename">
+ <summary>
+ The name of the file.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Files.FileObject.Purpose">
+ <summary>
+ The purpose of the file (e.g., "fine-tune").
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Files.FileObject.Bytes">
+ <summary>
+ The size of the file in bytes.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Files.FileObject.CreatedAt">
+ <summary>
+ The Unix timestamp when the file was created.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Files.FileObject.Object">
+ <summary>
+ The object type, always "file".
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Files.FileObject.Status">
+ <summary>
+ The status of the file processing.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Files.FileObject.StatusDetails">
+ <summary>
+ Additional details about the file status.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Files.FileList">
+ <summary>
+ Response containing a list of files.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Files.FileList.Object">
+ <summary>
+ The object type, always "list".
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Files.FileList.Data">
+ <summary>
+ List of file objects.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Files.FileDeleteResponse">
+ <summary>
+ Response from a file deletion operation.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Files.FileDeleteResponse.Id">
+ <summary>
+ The ID of the deleted file.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Files.FileDeleteResponse.Object">
+ <summary>
+ The object type, always "file".
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Files.FileDeleteResponse.Deleted">
+ <summary>
+ Whether the file was successfully deleted.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Fim.FimRequest">
+ <summary>
+ Request for fill-in-the-middle code completion.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Fim.FimRequest.Model">
+ <summary>
+ ID of the model to use.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Fim.FimRequest.Prefix">
+ <summary>
+ The code before the cursor position.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Fim.FimRequest.Suffix">
+ <summary>
+ The code after the cursor position.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Fim.FimRequest.MaxTokens">
+ <summary>
+ The maximum number of tokens to generate (optional).
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Fim.FimRequest.Temperature">
+ <summary>
+ Sampling temperature between 0 and 2 (optional).
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Fim.FimRequest.TopP">
+ <summary>
+ Nucleus sampling parameter (optional).
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Fim.FimRequest.N">
+ <summary>
+ Number of completions to generate (optional).
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Fim.FimRequest.Stream">
+ <summary>
+ Whether to stream the response (optional).
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Fim.FimRequest.StopSequences">
+ <summary>
+ Stop sequences where the API will stop generating further tokens (optional).
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Fim.FimResponse">
+ <summary>
+ Response from fill-in-the-middle completion.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Fim.FimResponse.Id">
+ <summary>
+ A unique identifier for the completion.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Fim.FimResponse.ObjectType">
+ <summary>
+ The object type, which is always "text_completion".
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Fim.FimResponse.Created">
+ <summary>
+ The Unix timestamp (in seconds) of when the completion was created.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Fim.FimResponse.Model">
+ <summary>
+ The model used for completion.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Fim.FimResponse.Choices">
+ <summary>
+ A list of completion choices.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Fim.FimResponse.Usage">
+ <summary>
+ Usage statistics for the completion request.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Fim.FimChoice">
+ <summary>
+ Represents a single completion choice in FIM response.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Fim.FimChoice.Text">
+ <summary>
+ The generated text completion.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Fim.FimChoice.Index">
+ <summary>
+ The index of this choice in the list of choices.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Fim.FimChoice.FinishReason">
+ <summary>
+ The reason the model stopped generating tokens.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Fim.FimUsage">
+ <summary>
+ Usage statistics for FIM completion.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Fim.FimUsage.PromptTokens">
+ <summary>
+ Number of tokens in the prompt.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Fim.FimUsage.CompletionTokens">
+ <summary>
+ Number of tokens in the generated completion.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Fim.FimUsage.TotalTokens">
+ <summary>
+ Total number of tokens used in the request.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Models.ModelList">
+ <summary>
+ Represents a list of available models.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Models.ModelList.Object">
+ <summary>
+ The object type, always "list".
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Models.ModelList.Data">
+ <summary>
+ List of model information objects.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Models.ModelInfo">
+ <summary>
+ Represents information about a specific model.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Models.ModelInfo.Id">
+ <summary>
+ The unique identifier of the model.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Models.ModelInfo.Object">
+ <summary>
+ The object type, always "model".
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Models.ModelInfo.Created">
+ <summary>
+ The Unix timestamp when the model was created.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Models.ModelInfo.OwnedBy">
+ <summary>
+ The organization that owns the model.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Models.ModelInfo.Capabilities">
+ <summary>
+ The capabilities of the model.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Models.ModelInfo.Name">
+ <summary>
+ The name of the model.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Models.ModelInfo.Description">
+ <summary>
+ The description of the model.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Models.ModelInfo.MaxContextLength">
+ <summary>
+ The maximum number of tokens the model can process.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Models.ModelInfo.Aliases">
+ <summary>
+ The aliases for the model.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Models.ModelInfo.DefaultModelParameters">
+ <summary>
+ The default model parameters.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Models.ModelInfo.Deprecation">
+ <summary>
+ Whether the model is deprecated.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Models.ModelCapabilities">
+ <summary>
+ Represents the capabilities of a model.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Models.ModelCapabilities.CompletionChat">
+ <summary>
+ Whether the model supports completion.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Models.ModelCapabilities.FunctionCalling">
+ <summary>
+ Whether the model supports function calling.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Models.ModelCapabilities.FineTuning">
+ <summary>
+ Whether the model supports fine-tuning.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Models.ModelCapabilities.Vision">
+ <summary>
+ Whether the model supports vision/image understanding.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Models.ModelParameters">
+ <summary>
+ Represents default parameters for a model.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Models.ModelParameters.Temperature">
+ <summary>
+ The default temperature for the model.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Models.ModelParameters.TopP">
+ <summary>
+ The default top_p for the model.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Models.ModelParameters.MaxTokens">
+ <summary>
+ The default max_tokens for the model.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Ocr.OcrRequest">
+ <summary>
+ Request for OCR text extraction from image file.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Ocr.OcrRequest.ImagePath">
+ <summary>
+ Path to the image file to process.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Ocr.OcrRequest.Model">
+ <summary>
+ ID of the model to use for OCR.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Ocr.OcrRequest.Language">
+ <summary>
+ Language hint for better OCR accuracy (optional).
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Ocr.OcrBase64Request">
+ <summary>
+ Request for OCR text extraction from base64-encoded image.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Ocr.OcrBase64Request.Image">
+ <summary>
+ Base64-encoded image data.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Ocr.OcrBase64Request.Model">
+ <summary>
+ ID of the model to use for OCR.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Ocr.OcrBase64Request.Language">
+ <summary>
+ Language hint for better OCR accuracy (optional).
+ </summary>
+</member>
+<member name="T:MistralAI.Net.MistralAI.Net.Models.Ocr.OcrResponse">
+ <summary>
+ Response from OCR text extraction.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Ocr.OcrResponse.Text">
+ <summary>
+ The extracted text from the image.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Ocr.OcrResponse.Confidence">
+ <summary>
+ Confidence score of the OCR result (0-1).
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Ocr.OcrResponse.DetectedLanguage">
+ <summary>
+ Language detected in the image.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.MistralAI.Net.Models.Ocr.OcrResponse.ProcessingTime">
+ <summary>
+ Processing time in milliseconds.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.Exceptions.MistralApiException">
+ <summary>
+ Base exception class for all Mistral AI API related exceptions.
+ </summary>
+</member>
+<member name="M:MistralAI.Net.Exceptions.MistralApiException.#ctor">
+ <summary>
+ Initializes a new instance of the MistralApiException class.
+ </summary>
+</member>
+<member name="M:MistralAI.Net.Exceptions.MistralApiException.#ctor(System.String)">
+ <summary>
+ Initializes a new instance of the MistralApiException class with a specified error message.
+ </summary>
+ <param name="message">The message that describes the error.</param>
+</member>
+<member name="M:MistralAI.Net.Exceptions.MistralApiException.#ctor(System.String,System.Exception)">
+ <summary>
+ Initializes a new instance of the MistralApiException class with a specified error message and inner exception.
+ </summary>
+ <param name="message">The message that describes the error.</param>
+ <param name="innerException">The exception that is the cause of the current exception.</param>
+</member>
+<member name="T:MistralAI.Net.Exceptions.MistralAuthenticationException">
+ <summary>
+ Exception thrown when authentication fails.
+ </summary>
+</member>
+<member name="M:MistralAI.Net.Exceptions.MistralAuthenticationException.#ctor">
+ <summary>
+ Initializes a new instance of the MistralAuthenticationException class.
+ </summary>
+</member>
+<member name="M:MistralAI.Net.Exceptions.MistralAuthenticationException.#ctor(System.String)">
+ <summary>
+ Initializes a new instance of the MistralAuthenticationException class with a specified error message.
+ </summary>
+ <param name="message">The message that describes the error.</param>
+</member>
+<member name="M:MistralAI.Net.Exceptions.MistralAuthenticationException.#ctor(System.String,System.Exception)">
+ <summary>
+ Initializes a new instance of the MistralAuthenticationException class with a specified error message and inner exception.
+ </summary>
+ <param name="message">The message that describes the error.</param>
+ <param name="innerException">The exception that is the cause of the current exception.</param>
+</member>
+<member name="T:MistralAI.Net.Exceptions.MistralRateLimitException">
+ <summary>
+ Exception thrown when rate limits are exceeded.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Exceptions.MistralRateLimitException.RetryAfterSeconds">
+ <summary>
+ Gets the retry after seconds if provided by the API.
+ </summary>
+</member>
+<member name="M:MistralAI.Net.Exceptions.MistralRateLimitException.#ctor">
+ <summary>
+ Initializes a new instance of the MistralRateLimitException class.
+ </summary>
+</member>
+<member name="M:MistralAI.Net.Exceptions.MistralRateLimitException.#ctor(System.String)">
+ <summary>
+ Initializes a new instance of the MistralRateLimitException class with a specified error message.
+ </summary>
+ <param name="message">The message that describes the error.</param>
+</member>
+<member name="M:MistralAI.Net.Exceptions.MistralRateLimitException.#ctor(System.String,System.Nullable{System.Int32})">
+ <summary>
+ Initializes a new instance of the MistralRateLimitException class with retry information.
+ </summary>
+ <param name="message">The message that describes the error.</param>
+ <param name="retryAfterSeconds">The number of seconds to wait before retrying.</param>
+</member>
+<member name="M:MistralAI.Net.Exceptions.MistralRateLimitException.#ctor(System.String,System.Exception)">
+ <summary>
+ Initializes a new instance of the MistralRateLimitException class with a specified error message and inner exception.
+ </summary>
+ <param name="message">The message that describes the error.</param>
+ <param name="innerException">The exception that is the cause of the current exception.</param>
+</member>
+<member name="T:MistralAI.Net.Exceptions.MistralValidationException">
+ <summary>
+ Exception thrown when validation fails for request parameters.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Exceptions.MistralValidationException.ValidationErrors">
+ <summary>
+ Gets the validation errors if available.
+ </summary>
+</member>
+<member name="M:MistralAI.Net.Exceptions.MistralValidationException.#ctor">
+ <summary>
+ Initializes a new instance of the MistralValidationException class.
+ </summary>
+</member>
+<member name="M:MistralAI.Net.Exceptions.MistralValidationException.#ctor(System.String)">
+ <summary>
+ Initializes a new instance of the MistralValidationException class with a specified error message.
+ </summary>
+ <param name="message">The message that describes the error.</param>
+</member>
+<member name="M:MistralAI.Net.Exceptions.MistralValidationException.#ctor(System.String,System.Collections.Generic.Dictionary{System.String,System.String[]})">
+ <summary>
+ Initializes a new instance of the MistralValidationException class with validation errors.
+ </summary>
+ <param name="message">The message that describes the error.</param>
+ <param name="validationErrors">The validation errors.</param>
+</member>
+<member name="M:MistralAI.Net.Exceptions.MistralValidationException.#ctor(System.String,System.Exception)">
+ <summary>
+ Initializes a new instance of the MistralValidationException class with a specified error message and inner exception.
+ </summary>
+ <param name="message">The message that describes the error.</param>
+ <param name="innerException">The exception that is the cause of the current exception.</param>
+</member>
+<member name="T:MistralAI.Net.Models.FineTuning.FineTuningJobRequest">
+ <summary>
+ Request for creating a fine-tuning job.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJobRequest.Model">
+ <summary>
+ The name of the model to fine-tune.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJobRequest.TrainingFile">
+ <summary>
+ The ID of an uploaded file that contains training data.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJobRequest.ValidationFile">
+ <summary>
+ The ID of an uploaded file that contains validation data (optional).
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJobRequest.Suffix">
+ <summary>
+ A string of up to 18 characters that will be added to your fine-tuned model name.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJobRequest.Hyperparameters">
+ <summary>
+ The hyperparameters used for the fine-tuning job.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJobRequest.Integrations">
+ <summary>
+ Integrations to enable for your fine-tuning job.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.Models.FineTuning.FineTuningJob">
+ <summary>
+ Represents a fine-tuning job.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJob.Id">
+ <summary>
+ The object identifier, which can be referenced in the API endpoints.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJob.Object">
+ <summary>
+ The object type, which is always "fine_tuning.job".
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJob.CreatedAt">
+ <summary>
+ The Unix timestamp (in seconds) for when the fine-tuning job was created.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJob.FinishedAt">
+ <summary>
+ The Unix timestamp (in seconds) for when the fine-tuning job was finished.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJob.Model">
+ <summary>
+ The base model that is being fine-tuned.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJob.FineTunedModel">
+ <summary>
+ The name of the fine-tuned model that is being created.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJob.OrganizationId">
+ <summary>
+ The organization that owns the fine-tuning job.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJob.Status">
+ <summary>
+ The current status of the fine-tuning job.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJob.Hyperparameters">
+ <summary>
+ The hyperparameters used for the fine-tuning job.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJob.TrainingFile">
+ <summary>
+ The file ID used for training.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJob.ValidationFile">
+ <summary>
+ The file ID used for validation.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJob.ResultFiles">
+ <summary>
+ The compiled results file ID(s) for the fine-tuning job.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJob.TrainedTokens">
+ <summary>
+ The total number of billable tokens processed by this fine-tuning job.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJob.Error">
+ <summary>
+ For fine-tuning jobs that have failed, this will contain more information on the cause of the failure.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.Models.FineTuning.FineTuningHyperparameters">
+ <summary>
+ Hyperparameters for fine-tuning.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningHyperparameters.BatchSize">
+ <summary>
+ Number of examples in each batch.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningHyperparameters.LearningRateMultiplier">
+ <summary>
+ Scaling factor for the learning rate.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningHyperparameters.NEpochs">
+ <summary>
+ The number of epochs to train the model for.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.Models.FineTuning.FineTuningIntegration">
+ <summary>
+ Integration configuration for fine-tuning jobs.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningIntegration.Type">
+ <summary>
+ The type of integration to enable.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningIntegration.Wandb">
+ <summary>
+ The settings for a Weights and Biases integration.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.Models.FineTuning.WandbIntegration">
+ <summary>
+ Weights and Biases integration settings.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.WandbIntegration.Project">
+ <summary>
+ The name of the project that the new run will be created under.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.WandbIntegration.Name">
+ <summary>
+ A display name to set for the run.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.WandbIntegration.Tags">
+ <summary>
+ A list of tags to be attached to the newly created run.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.Models.FineTuning.FineTuningError">
+ <summary>
+ Error information for failed fine-tuning jobs.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningError.Code">
+ <summary>
+ A machine-readable error code.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningError.Message">
+ <summary>
+ A human-readable error message.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningError.Param">
+ <summary>
+ The parameter that was invalid, usually training_file or validation_file.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.Models.FineTuning.FineTuningJobList">
+ <summary>
+ Response containing a list of fine-tuning jobs.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJobList.Object">
+ <summary>
+ The object type, always "list".
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJobList.Data">
+ <summary>
+ List of fine-tuning jobs.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJobList.HasMore">
+ <summary>
+ Whether there are more fine-tuning jobs available.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.Models.FineTuning.FineTuningJobEvent">
+ <summary>
+ Represents an event in a fine-tuning job.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJobEvent.Id">
+ <summary>
+ The event identifier.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJobEvent.Object">
+ <summary>
+ The object type, which is always "fine_tuning.job.event".
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJobEvent.CreatedAt">
+ <summary>
+ The Unix timestamp (in seconds) for when the event was created.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJobEvent.Level">
+ <summary>
+ The log level of the event.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJobEvent.Message">
+ <summary>
+ The message describing the event.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.Models.FineTuning.FineTuningJobEventList">
+ <summary>
+ Response containing a list of fine-tuning job events.
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJobEventList.Object">
+ <summary>
+ The object type, always "list".
+ </summary>
+</member>
+<member name="P:MistralAI.Net.Models.FineTuning.FineTuningJobEventList.Data">
+ <summary>
+ List of fine-tuning job events.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.Utils.MistralConstants">
+ <summary>
+ Contains constant values used throughout the library.
+ </summary>
+</member>
+<member name="F:MistralAI.Net.Utils.MistralConstants.DefaultBaseUrl">
+ <summary>
+ The default base URL for the Mistral AI API.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.Utils.MistralConstants.Models">
+ <summary>
+ Available Mistral AI models.
+ </summary>
+</member>
+<member name="F:MistralAI.Net.Utils.MistralConstants.Models.MistralLargeLatest">
+ <summary>
+ The latest large Mistral model.
+ </summary>
+</member>
+<member name="F:MistralAI.Net.Utils.MistralConstants.Models.MistralLarge2">
+ <summary>
+ Mistral Large 2 model.
+ </summary>
+</member>
+<member name="F:MistralAI.Net.Utils.MistralConstants.Models.MistralSmall">
+ <summary>
+ Mistral Small model.
+ </summary>
+</member>
+<member name="F:MistralAI.Net.Utils.MistralConstants.Models.Codestral">
+ <summary>
+ Codestral model for code generation.
+ </summary>
+</member>
+<member name="F:MistralAI.Net.Utils.MistralConstants.Models.MistralEmbed">
+ <summary>
+ Mistral embedding model.
+ </summary>
+</member>
+<member name="F:MistralAI.Net.Utils.MistralConstants.Models.Pixtral">
+ <summary>
+ Pixtral model for vision tasks.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.Utils.MistralConstants.Roles">
+ <summary>
+ Message roles for chat conversations.
+ </summary>
+</member>
+<member name="F:MistralAI.Net.Utils.MistralConstants.Roles.System">
+ <summary>
+ System message role for instructions.
+ </summary>
+</member>
+<member name="F:MistralAI.Net.Utils.MistralConstants.Roles.User">
+ <summary>
+ User message role for user input.
+ </summary>
+</member>
+<member name="F:MistralAI.Net.Utils.MistralConstants.Roles.Assistant">
+ <summary>
+ Assistant message role for AI responses.
+ </summary>
+</member>
+<member name="F:MistralAI.Net.Utils.MistralConstants.Roles.Tool">
+ <summary>
+ Tool message role for tool call responses.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.Utils.MistralConstants.FinishReasons">
+ <summary>
+ Finish reasons for chat completions.
+ </summary>
+</member>
+<member name="F:MistralAI.Net.Utils.MistralConstants.FinishReasons.Stop">
+ <summary>
+ The model finished generating the response naturally.
+ </summary>
+</member>
+<member name="F:MistralAI.Net.Utils.MistralConstants.FinishReasons.Length">
+ <summary>
+ The response was truncated due to length limits.
+ </summary>
+</member>
+<member name="F:MistralAI.Net.Utils.MistralConstants.FinishReasons.ToolCalls">
+ <summary>
+ The model made a tool call.
+ </summary>
+</member>
+<member name="F:MistralAI.Net.Utils.MistralConstants.FinishReasons.ContentFilter">
+ <summary>
+ The response was filtered by content policy.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.Utils.MistralConstants.EncodingFormats">
+ <summary>
+ Encoding formats for embeddings.
+ </summary>
+</member>
+<member name="F:MistralAI.Net.Utils.MistralConstants.EncodingFormats.Float">
+ <summary>
+ Float encoding format.
+ </summary>
+</member>
+<member name="F:MistralAI.Net.Utils.MistralConstants.EncodingFormats.Base64">
+ <summary>
+ Base64 encoding format.
+ </summary>
+</member>
+<member name="T:MistralAI.Net.Utils.MistralHelpers">
+ <summary>
+ Helper class for common operations.
+ </summary>
+</member>
+<member name="M:MistralAI.Net.Utils.MistralHelpers.IsValidApiKey(System.String)">
+ <summary>
+ Validates an API key format.
+ </summary>
+ <param name="apiKey">The API key to validate.</param>
+ <returns>True if the API key appears to be valid.</returns>
+</member>
+<member name="M:MistralAI.Net.Utils.MistralHelpers.MaskApiKey(System.String)">
+ <summary>
+ Masks an API key for secure display.
+ </summary>
+ <param name="apiKey">The API key to mask.</param>
+ <returns>The masked API key.</returns>
+</member>
+<member name="M:MistralAI.Net.Utils.MistralHelpers.IsValidTemperature(System.Nullable{System.Double})">
+ <summary>
+ Validates temperature parameter.
+ </summary>
+ <param name="temperature">The temperature value to validate.</param>
+ <returns>True if the temperature is valid.</returns>
+</member>
+<member name="M:MistralAI.Net.Utils.MistralHelpers.IsValidTopP(System.Nullable{System.Double})">
+ <summary>
+ Validates top_p parameter.
+ </summary>
+ <param name="topP">The top_p value to validate.</param>
+ <returns>True if the top_p is valid.</returns>
+</member>
+<member name="M:MistralAI.Net.Utils.MistralHelpers.EstimateTokenCount(System.String)">
+ <summary>
+ Estimates token count for text (rough approximation).
+ </summary>
+ <param name="text">The text to estimate tokens for.</param>
+ <returns>Estimated token count.</returns>
+</member>
+</members>
+</doc>

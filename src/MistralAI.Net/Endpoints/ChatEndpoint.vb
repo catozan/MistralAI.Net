@@ -43,7 +43,9 @@ Namespace MistralAI.Net.Endpoints
             End If
 
             ValidateRequest(request)
-            Return Await PostAsync(Of Models.Chat.ChatCompletionRequest, Models.Chat.ChatCompletionResponse)("v1/chat/completions", request)
+            Dim json = JsonConvert.SerializeObject(request)
+            Dim responseJson = Await PostAsync("v1/chat/completions", json)
+            Return JsonConvert.DeserializeObject(Of Models.Chat.ChatCompletionResponse)(responseJson)
         End Function
 
         ''' <summary>

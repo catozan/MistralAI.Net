@@ -147,21 +147,8 @@ Namespace MistralAI.Net.Endpoints
         ''' <returns>Deletion status.</returns>
         Public Overloads Async Function DeleteAsync(agentId As String) As Task(Of Models.Agents.AgentDeleteResponse)
             ValidateAgentId(agentId)
-            Try
-                Using response As HttpResponseMessage = Await HttpClient.DeleteAsync($"v1/agents/{agentId}")
-                    Dim content As String = Await response.Content.ReadAsStringAsync()
-                    
-                    If response.IsSuccessStatusCode Then
-                        Return JsonConvert.DeserializeObject(Of Models.Agents.AgentDeleteResponse)(content, JsonSettings)
-                    Else
-                        Throw New Exceptions.MistralApiException($"API request failed with status {response.StatusCode}: {content}")
-                    End If
-                End Using
-            Catch ex As HttpRequestException
-                Throw New Exceptions.MistralApiException($"HTTP request failed: {ex.Message}", ex)
-            Catch ex As TaskCanceledException
-                Throw New Exceptions.MistralApiException("Request timed out.", ex)
-            End Try
+            Dim responseJson = Await MyBase.DeleteAsync($"v1/agents/{agentId}")
+            Return JsonConvert.DeserializeObject(Of Models.Agents.AgentDeleteResponse)(responseJson)
         End Function
 
         Private Sub ValidateRequest(request As Models.Agents.AgentRequest)

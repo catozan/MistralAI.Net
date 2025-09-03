@@ -35,7 +35,8 @@ Namespace MistralAI.Net.Endpoints
         ''' </summary>
         ''' <returns>List of beta features.</returns>
         Public Async Function ListFeaturesAsync() As Task(Of Models.Beta.BetaFeatureList)
-            Return Await GetAsync(Of Models.Beta.BetaFeatureList)("v1/beta/features")
+            Dim responseJson = Await GetAsync("v1/beta/features")
+            Return JsonConvert.DeserializeObject(Of Models.Beta.BetaFeatureList)(responseJson)
         End Function
 
         ''' <summary>
@@ -54,7 +55,8 @@ Namespace MistralAI.Net.Endpoints
         ''' <returns>Information about the beta feature.</returns>
         Public Async Function GetFeatureAsync(featureId As String) As Task(Of Models.Beta.BetaFeature)
             ValidateFeatureId(featureId)
-            Return Await GetAsync(Of Models.Beta.BetaFeature)($"v1/beta/features/{featureId}")
+            Dim responseJson = Await GetAsync($"v1/beta/features/{featureId}")
+            Return JsonConvert.DeserializeObject(Of Models.Beta.BetaFeature)(responseJson)
         End Function
 
         ''' <summary>
@@ -73,7 +75,9 @@ Namespace MistralAI.Net.Endpoints
         ''' <returns>Result of the enable operation.</returns>
         Public Async Function EnableFeatureAsync(featureId As String) As Task(Of Models.Beta.BetaFeatureToggleResponse)
             ValidateFeatureId(featureId)
-            Return Await PostAsync(Of Object, Models.Beta.BetaFeatureToggleResponse)($"v1/beta/features/{featureId}/enable", Nothing)
+            Dim json = JsonConvert.SerializeObject(Nothing)
+            Dim responseJson = Await PostAsync($"v1/beta/features/{featureId}/enable", json)
+            Return JsonConvert.DeserializeObject(Of Models.Beta.BetaFeatureToggleResponse)(responseJson)
         End Function
 
         ''' <summary>
@@ -92,7 +96,9 @@ Namespace MistralAI.Net.Endpoints
         ''' <returns>Result of the disable operation.</returns>
         Public Async Function DisableFeatureAsync(featureId As String) As Task(Of Models.Beta.BetaFeatureToggleResponse)
             ValidateFeatureId(featureId)
-            Return Await PostAsync(Of Object, Models.Beta.BetaFeatureToggleResponse)($"v1/beta/features/{featureId}/disable", Nothing)
+            Dim json = JsonConvert.SerializeObject(Nothing)
+            Dim responseJson = Await PostAsync($"v1/beta/features/{featureId}/disable", json)
+            Return JsonConvert.DeserializeObject(Of Models.Beta.BetaFeatureToggleResponse)(responseJson)
         End Function
 
         ''' <summary>
@@ -117,7 +123,9 @@ Namespace MistralAI.Net.Endpoints
         ''' <returns>The response from the beta API.</returns>
         Public Async Function CallBetaApiAsync(Of TRequest, TResponse)(endpoint As String, request As TRequest) As Task(Of TResponse)
             ValidateBetaEndpoint(endpoint)
-            Return Await PostAsync(Of TRequest, TResponse)($"v1/beta/{endpoint}", request)
+            Dim json = JsonConvert.SerializeObject(request)
+            Dim responseJson = Await PostAsync($"v1/beta/{endpoint}", json)
+            Return JsonConvert.DeserializeObject(Of TResponse)(responseJson)
         End Function
 
         Private Sub ValidateFeatureId(featureId As String)

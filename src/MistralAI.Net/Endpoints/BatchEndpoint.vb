@@ -38,7 +38,9 @@ Namespace MistralAI.Net.Endpoints
         ''' <returns>Information about the created batch job.</returns>
         Public Async Function CreateAsync(request As Models.Batch.BatchRequest) As Task(Of Models.Batch.Batch)
             ValidateRequest(request)
-            Return Await PostAsync(Of Models.Batch.BatchRequest, Models.Batch.Batch)("v1/batches", request)
+            Dim json = JsonConvert.SerializeObject(request)
+            Dim responseJson = Await PostAsync("v1/batches", json)
+            Return JsonConvert.DeserializeObject(Of Models.Batch.Batch)(responseJson)
         End Function
 
         ''' <summary>
@@ -69,7 +71,8 @@ Namespace MistralAI.Net.Endpoints
             End If
 
             Dim query As String = If(queryParams.Count > 0, "?" & String.Join("&", queryParams), "")
-            Return Await GetAsync(Of Models.Batch.BatchList)($"v1/batches{query}")
+            Dim responseJson = Await GetAsync($"v1/batches{query}")
+            Return JsonConvert.DeserializeObject(Of Models.Batch.BatchList)(responseJson)
         End Function
 
         ''' <summary>
@@ -88,7 +91,8 @@ Namespace MistralAI.Net.Endpoints
         ''' <returns>Information about the batch job.</returns>
         Public Async Function RetrieveAsync(batchId As String) As Task(Of Models.Batch.Batch)
             ValidateBatchId(batchId)
-            Return Await GetAsync(Of Models.Batch.Batch)($"v1/batches/{batchId}")
+            Dim responseJson = Await GetAsync($"v1/batches/{batchId}")
+            Return JsonConvert.DeserializeObject(Of Models.Batch.Batch)(responseJson)
         End Function
 
         ''' <summary>
@@ -107,7 +111,9 @@ Namespace MistralAI.Net.Endpoints
         ''' <returns>Information about the cancelled batch job.</returns>
         Public Async Function CancelAsync(batchId As String) As Task(Of Models.Batch.Batch)
             ValidateBatchId(batchId)
-            Return Await PostAsync(Of Object, Models.Batch.Batch)($"v1/batches/{batchId}/cancel", Nothing)
+            Dim json = JsonConvert.SerializeObject(Nothing)
+            Dim responseJson = Await PostAsync($"v1/batches/{batchId}/cancel", json)
+            Return JsonConvert.DeserializeObject(Of Models.Batch.Batch)(responseJson)
         End Function
 
         Private Sub ValidateRequest(request As Models.Batch.BatchRequest)

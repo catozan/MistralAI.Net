@@ -49,7 +49,8 @@ Namespace MistralAI.Net.Endpoints
                 ' Add purpose
                 form.Add(New StringContent(purpose), "purpose")
 
-                Return Await PostMultipartAsync(Of Models.Files.FileObject)("v1/files", form)
+                Dim responseJson = Await PostMultipartAsync("v1/files", form)
+                Return JsonConvert.DeserializeObject(Of Models.Files.FileObject)(responseJson)
             End Using
         End Function
 
@@ -66,7 +67,8 @@ Namespace MistralAI.Net.Endpoints
         ''' </summary>
         ''' <returns>List of uploaded files.</returns>
         Public Async Function ListAsync() As Task(Of Models.Files.FileList)
-            Return Await GetAsync(Of Models.Files.FileList)("v1/files")
+            Dim responseJson = Await GetAsync("v1/files")
+            Return JsonConvert.DeserializeObject(Of Models.Files.FileList)(responseJson)
         End Function
 
         ''' <summary>
@@ -85,7 +87,8 @@ Namespace MistralAI.Net.Endpoints
         ''' <returns>Information about the file.</returns>
         Public Async Function RetrieveAsync(fileId As String) As Task(Of Models.Files.FileObject)
             ValidateFileId(fileId)
-            Return Await GetAsync(Of Models.Files.FileObject)($"v1/files/{fileId}")
+            Dim responseJson = Await GetAsync($"v1/files/{fileId}")
+            Return JsonConvert.DeserializeObject(Of Models.Files.FileObject)(responseJson)
         End Function
 
         ''' <summary>
@@ -104,21 +107,8 @@ Namespace MistralAI.Net.Endpoints
         ''' <returns>Deletion status.</returns>
         Public Overloads Async Function DeleteAsync(fileId As String) As Task(Of Models.Files.FileDeleteResponse)
             ValidateFileId(fileId)
-            Try
-                Using response As HttpResponseMessage = Await HttpClient.DeleteAsync($"v1/files/{fileId}")
-                    Dim content As String = Await response.Content.ReadAsStringAsync()
-                    
-                    If response.IsSuccessStatusCode Then
-                        Return JsonConvert.DeserializeObject(Of Models.Files.FileDeleteResponse)(content, JsonSettings)
-                    Else
-                        Throw New Exceptions.MistralApiException($"API request failed with status {response.StatusCode}: {content}")
-                    End If
-                End Using
-            Catch ex As HttpRequestException
-                Throw New Exceptions.MistralApiException($"HTTP request failed: {ex.Message}", ex)
-            Catch ex As TaskCanceledException
-                Throw New Exceptions.MistralApiException("Request timed out.", ex)
-            End Try
+            Dim responseJson = Await MyBase.DeleteAsync($"v1/files/{fileId}")
+            Return JsonConvert.DeserializeObject(Of Models.Files.FileDeleteResponse)(responseJson)
         End Function
 
         ''' <summary>
@@ -138,10 +128,9 @@ Namespace MistralAI.Net.Endpoints
         Public Async Function DownloadAsync(fileId As String) As Task(Of Byte())
             ValidateFileId(fileId)
             
-            Dim response = Await HttpClient.GetAsync($"v1/files/{fileId}/content")
-            response.EnsureSuccessStatusCode()
-            
-            Return Await response.Content.ReadAsByteArrayAsync()
+            Dim responseJson = Await GetAsync($"v1/files/{fileId}/content")
+            ' For file download, convert the response to byte array
+            Return System.Text.Encoding.UTF8.GetBytes(responseJson)
         End Function
 
         Private Sub ValidateUploadRequest(filePath As String, purpose As String)

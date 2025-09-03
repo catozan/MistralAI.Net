@@ -1,5 +1,6 @@
 Imports System.Text
 Imports System.Net.Http
+Imports System.IO
 Imports Newtonsoft.Json
 Imports MistralAI.Net.Models
 Imports MistralAI.Net.Exceptions
@@ -53,7 +54,8 @@ Namespace MistralAI.Net.Endpoints
                     form.Add(New StringContent(request.Language), "language")
                 End If
 
-                Return Await PostMultipartAsync(Of Models.Ocr.OcrResponse)("v1/ocr", form)
+                Dim responseJson = Await PostMultipartAsync("v1/ocr", form)
+                Return JsonConvert.DeserializeObject(Of Models.Ocr.OcrResponse)(responseJson)
             End Using
         End Function
 
@@ -83,7 +85,9 @@ Namespace MistralAI.Net.Endpoints
             }
 
             ValidateBase64Request(request)
-            Return Await PostAsync(Of Models.Ocr.OcrBase64Request, Models.Ocr.OcrResponse)("v1/ocr", request)
+            Dim json = JsonConvert.SerializeObject(request)
+            Dim responseJson = Await PostAsync("v1/ocr", json)
+            Return JsonConvert.DeserializeObject(Of Models.Ocr.OcrResponse)(responseJson)
         End Function
 
         Private Sub ValidateRequest(request As Models.Ocr.OcrRequest)

@@ -1,5 +1,6 @@
 Imports System.Text
 Imports System.Net.Http
+Imports System.IO
 Imports Newtonsoft.Json
 Imports MistralAI.Net.Models
 Imports MistralAI.Net.Exceptions
@@ -61,7 +62,8 @@ Namespace MistralAI.Net.Endpoints
                     form.Add(New StringContent(request.Temperature.Value.ToString()), "temperature")
                 End If
 
-                Return Await PostMultipartAsync(Of Models.Audio.TranscriptionResponse)("v1/audio/transcriptions", form)
+                Dim responseJson = Await PostMultipartAsync("v1/audio/transcriptions", form)
+                Return JsonConvert.DeserializeObject(Of Models.Audio.TranscriptionResponse)(responseJson)
             End Using
         End Function
 
@@ -100,7 +102,8 @@ Namespace MistralAI.Net.Endpoints
                     form.Add(New StringContent(request.Temperature.Value.ToString()), "temperature")
                 End If
 
-                Return Await PostMultipartAsync(Of Models.Audio.TranslationResponse)("v1/audio/translations", form)
+                Dim responseJson = Await PostMultipartAsync("v1/audio/translations", form)
+                Return JsonConvert.DeserializeObject(Of Models.Audio.TranslationResponse)(responseJson)
             End Using
         End Function
 
@@ -121,8 +124,10 @@ Namespace MistralAI.Net.Endpoints
         Public Async Function SpeechAsync(request As Models.Audio.SpeechRequest) As Task(Of Byte())
             ValidateSpeechRequest(request)
 
-            Dim response = Await PostAsync(Of Models.Audio.SpeechRequest, HttpContent)("v1/audio/speech", request)
-            Return Await response.ReadAsByteArrayAsync()
+            Dim json = JsonConvert.SerializeObject(request)
+            Dim responseJson = Await PostAsync("v1/audio/speech", json)
+            ' For audio endpoints, we typically get binary data back
+            Return System.Text.Encoding.UTF8.GetBytes(responseJson)
         End Function
 
         Private Sub ValidateTranscriptionRequest(request As Models.Audio.TranscriptionRequest)

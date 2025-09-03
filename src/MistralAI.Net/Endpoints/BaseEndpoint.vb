@@ -175,8 +175,8 @@ Namespace MistralAI.Net.Endpoints
             Dim results As New List(Of T)()
             Using stream = Await response.Content.ReadAsStreamAsync()
             Using reader As New StreamReader(stream)
-                Dim line As String
-                While (line = Await reader.ReadLineAsync()) IsNot Nothing
+                Dim line As String = Await reader.ReadLineAsync()
+                While line IsNot Nothing
                     If Not String.IsNullOrWhiteSpace(line) AndAlso line.StartsWith("data: ") Then
                         Dim jsonData = line.Substring(6) ' Remove "data: " prefix
                         If jsonData.Trim() <> "[DONE]" Then
@@ -188,6 +188,7 @@ Namespace MistralAI.Net.Endpoints
                             End Try
                         End If
                     End If
+                    line = Await reader.ReadLineAsync()
                 End While
             End Using
             End Using

@@ -32,7 +32,8 @@ Namespace MistralAI.Net.Endpoints
         ''' </summary>
         ''' <returns>A task that represents the asynchronous operation with a list of available models.</returns>
         Public Async Function ListAsync() As Task(Of Models.Models.ModelList)
-            Return Await GetAsync(Of Models.Models.ModelList)("v1/models")
+            Dim responseJson = Await GetAsync("v1/models")
+            Return JsonConvert.DeserializeObject(Of Models.Models.ModelList)(responseJson)
         End Function
 
         ''' <summary>
@@ -54,7 +55,8 @@ Namespace MistralAI.Net.Endpoints
                 Throw New ArgumentException("Model ID is required.", NameOf(modelId))
             End If
 
-            Return Await GetAsync(Of Models.Models.ModelInfo)($"v1/models/{modelId}")
+            Dim responseJson = Await GetAsync($"v1/models/{modelId}")
+            Return JsonConvert.DeserializeObject(Of Models.Models.ModelInfo)(responseJson)
         End Function
 
         ''' <summary>
@@ -76,7 +78,8 @@ Namespace MistralAI.Net.Endpoints
                 Throw New ArgumentException("Model ID is required.", NameOf(modelId))
             End If
 
-            Return Await DeleteAsync(Of ModelDeletionResponse)($"v1/models/{modelId}")
+            Dim responseJson = Await MyBase.DeleteAsync($"v1/models/{modelId}")
+            Return JsonConvert.DeserializeObject(Of ModelDeletionResponse)(responseJson)
         End Function
 
     End Class

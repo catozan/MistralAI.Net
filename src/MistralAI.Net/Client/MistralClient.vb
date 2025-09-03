@@ -21,7 +21,7 @@ Namespace MistralAI.Net.Client
         Private ReadOnly _models As MistralAI.Net.Endpoints.ModelsEndpoint
         Private ReadOnly _embeddings As MistralAI.Net.Endpoints.EmbeddingsEndpoint
         Private ReadOnly _files As MistralAI.Net.Endpoints.FilesEndpoint
-        'Private ReadOnly _fineTuning As MistralAI.Net.Endpoints.FineTuningEndpoint
+        Private ReadOnly _fineTuning As MistralAI.Net.Endpoints.FineTuningEndpoint
         Private ReadOnly _batch As MistralAI.Net.Endpoints.BatchEndpoint
         Private ReadOnly _agents As MistralAI.Net.Endpoints.AgentsEndpoint
         Private ReadOnly _audio As MistralAI.Net.Endpoints.AudioEndpoint
@@ -69,11 +69,11 @@ Namespace MistralAI.Net.Client
         ''' <summary>
         ''' Gets the FineTuning endpoint for fine-tuning operations.
         ''' </summary>
-        'Public ReadOnly Property FineTuning As MistralAI.Net.Endpoints.FineTuningEndpoint
-        '    Get
-        '        Return _fineTuning
-        '    End Get
-        'End Property
+        Public ReadOnly Property FineTuning As MistralAI.Net.Endpoints.FineTuningEndpoint
+            Get
+                Return _fineTuning
+            End Get
+        End Property
 
         ''' <summary>
         ''' Gets the Batch endpoint for batch processing operations.
@@ -165,7 +165,7 @@ Namespace MistralAI.Net.Client
             _models = New MistralAI.Net.Endpoints.ModelsEndpoint(_httpClient, _apiKey, _baseUrl)
             _embeddings = New MistralAI.Net.Endpoints.EmbeddingsEndpoint(_httpClient, _apiKey, _baseUrl)
             _files = New MistralAI.Net.Endpoints.FilesEndpoint(_httpClient, _apiKey, _baseUrl)
-            '_fineTuning = New MistralAI.Net.Endpoints.FineTuningEndpoint(_httpClient, _apiKey, _baseUrl)
+            _fineTuning = New MistralAI.Net.Endpoints.FineTuningEndpoint(_httpClient, _apiKey, _baseUrl)
             _batch = New MistralAI.Net.Endpoints.BatchEndpoint(_httpClient, _apiKey, _baseUrl)
             _agents = New MistralAI.Net.Endpoints.AgentsEndpoint(_httpClient, _apiKey, _baseUrl)
             _audio = New MistralAI.Net.Endpoints.AudioEndpoint(_httpClient, _apiKey, _baseUrl)

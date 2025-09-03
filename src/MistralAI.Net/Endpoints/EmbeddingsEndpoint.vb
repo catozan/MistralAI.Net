@@ -15,8 +15,8 @@ Namespace MistralAI.Net.Endpoints
         ''' Initializes a new instance of the EmbeddingsEndpoint class.
         ''' </summary>
         ''' <param name="httpClient">The HttpClient to use for API requests.</param>
-        Public Sub New(httpClient As HttpClient)
-            MyBase.New(httpClient)
+        Public Sub New(httpClient As HttpClient, apiKey As String, baseUrl As String)
+            MyBase.New(httpClient, apiKey, baseUrl)
         End Sub
 
         ''' <summary>
@@ -39,7 +39,9 @@ Namespace MistralAI.Net.Endpoints
             End If
 
             ValidateRequest(request)
-            Return Await PostAsync(Of Models.Embeddings.EmbeddingRequest, Models.Embeddings.EmbeddingResponse)("v1/embeddings", request)
+            Dim json As String = Newtonsoft.Json.JsonConvert.SerializeObject(request)
+            Dim response As String = Await PostAsync("v1/embeddings", json)
+            Return Newtonsoft.Json.JsonConvert.DeserializeObject(Of Models.Embeddings.EmbeddingResponse)(response)
         End Function
 
         ''' <summary>

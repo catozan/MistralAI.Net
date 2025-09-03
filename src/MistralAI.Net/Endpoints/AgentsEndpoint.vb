@@ -38,7 +38,9 @@ Namespace MistralAI.Net.Endpoints
         ''' <returns>Information about the created agent.</returns>
         Public Async Function CreateAsync(request As Models.Agents.AgentRequest) As Task(Of Models.Agents.Agent)
             ValidateRequest(request)
-            Return Await PostAsync(Of Models.Agents.AgentRequest, Models.Agents.Agent)("v1/agents", request)
+            Dim json As String = JsonConvert.SerializeObject(request)
+            Dim response As String = Await PostAsync("v1/agents", json)
+            Return JsonConvert.DeserializeObject(Of Models.Agents.Agent)(response)
         End Function
 
         ''' <summary>
@@ -81,7 +83,8 @@ Namespace MistralAI.Net.Endpoints
             End If
 
             Dim query As String = If(queryParams.Count > 0, "?" & String.Join("&", queryParams), "")
-            Return Await GetAsync(Of Models.Agents.AgentList)($"v1/agents{query}")
+            Dim response As String = Await GetAsync($"v1/agents{query}")
+            Return JsonConvert.DeserializeObject(Of Models.Agents.AgentList)(response)
         End Function
 
         ''' <summary>
@@ -100,7 +103,8 @@ Namespace MistralAI.Net.Endpoints
         ''' <returns>Information about the agent.</returns>
         Public Async Function RetrieveAsync(agentId As String) As Task(Of Models.Agents.Agent)
             ValidateAgentId(agentId)
-            Return Await GetAsync(Of Models.Agents.Agent)($"v1/agents/{agentId}")
+            Dim response As String = Await GetAsync($"v1/agents/{agentId}")
+            Return JsonConvert.DeserializeObject(Of Models.Agents.Agent)(response)
         End Function
 
         ''' <summary>
@@ -122,7 +126,9 @@ Namespace MistralAI.Net.Endpoints
         Public Async Function UpdateAsync(agentId As String, request As Models.Agents.AgentUpdateRequest) As Task(Of Models.Agents.Agent)
             ValidateAgentId(agentId)
             ValidateUpdateRequest(request)
-            Return Await PostAsync(Of Models.Agents.AgentUpdateRequest, Models.Agents.Agent)($"v1/agents/{agentId}", request)
+            Dim json As String = JsonConvert.SerializeObject(request)
+            Dim response As String = Await PostAsync($"v1/agents/{agentId}", json)
+            Return JsonConvert.DeserializeObject(Of Models.Agents.Agent)(response)
         End Function
 
         ''' <summary>

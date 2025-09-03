@@ -16,8 +16,10 @@ Namespace MistralAI.Net.Endpoints
         ''' Initializes a new instance of the BatchEndpoint class.
         ''' </summary>
         ''' <param name="httpClient">The HTTP client to use for requests.</param>
-        Public Sub New(httpClient As HttpClient)
-            MyBase.New(httpClient)
+        ''' <param name="apiKey">The API key for authentication.</param>
+        ''' <param name="baseUrl">The base URL for the API.</param>
+        Public Sub New(httpClient As HttpClient, apiKey As String, baseUrl As String)
+            MyBase.New(httpClient, apiKey, baseUrl)
         End Sub
 
         ''' <summary>

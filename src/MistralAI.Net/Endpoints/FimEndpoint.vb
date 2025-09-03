@@ -38,7 +38,9 @@ Namespace MistralAI.Net.Endpoints
         ''' <returns>The completion result.</returns>
         Public Async Function CompleteAsync(request As Models.Fim.FimRequest) As Task(Of Models.Fim.FimResponse)
             ValidateRequest(request)
-            Return Await PostAsync(Of Models.Fim.FimRequest, Models.Fim.FimResponse)("v1/fim/completions", request)
+            Dim json As String = JsonConvert.SerializeObject(request)
+            Dim response As String = Await PostAsync("v1/fim/completions", json)
+            Return JsonConvert.DeserializeObject(Of Models.Fim.FimResponse)(response)
         End Function
 
         ''' <summary>

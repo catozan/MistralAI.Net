@@ -39,7 +39,9 @@ Namespace MistralAI.Net.Endpoints
         ''' <returns>The classification result.</returns>
         Public Async Function ClassifyAsync(request As MistralAI.Net.Models.Classifiers.ClassificationRequest) As Task(Of MistralAI.Net.Models.Classifiers.ClassificationResponse)
             ValidateRequest(request)
-            Return Await PostAsync(Of MistralAI.Net.Models.Classifiers.ClassificationRequest, MistralAI.Net.Models.Classifiers.ClassificationResponse)("v1/classifiers", request)
+            Dim json As String = JsonConvert.SerializeObject(request)
+            Dim response As String = Await PostAsync("v1/classifiers", json)
+            Return JsonConvert.DeserializeObject(Of MistralAI.Net.Models.Classifiers.ClassificationResponse)(response)
         End Function
 
         ''' <summary>

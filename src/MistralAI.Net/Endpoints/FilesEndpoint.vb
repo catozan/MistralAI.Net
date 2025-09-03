@@ -17,8 +17,8 @@ Namespace MistralAI.Net.Endpoints
         ''' Initializes a new instance of the FilesEndpoint class.
         ''' </summary>
         ''' <param name="httpClient">The HTTP client to use for requests.</param>
-        Public Sub New(httpClient As HttpClient)
-            MyBase.New(httpClient)
+        Public Sub New(httpClient As HttpClient, apiKey As String, baseUrl As String)
+            MyBase.New(httpClient, apiKey, baseUrl)
         End Sub
 
         ''' <summary>

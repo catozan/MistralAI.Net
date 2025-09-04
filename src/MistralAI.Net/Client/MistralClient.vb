@@ -144,7 +144,7 @@ Namespace MistralAI.Net.Client
         ''' <param name="apiKey">The Mistral AI API key.</param>
         ''' <param name="baseUrl">The base URL for the API. Defaults to https://api.mistral.ai.</param>
         ''' <param name="httpClient">Optional HttpClient instance. If not provided, a new instance will be created.</param>
-        Public Sub New(apiKey As String, Optional baseUrl As String = "https://api.mistral.ai/v1/", Optional httpClient As HttpClient = Nothing)
+        Public Sub New(apiKey As String, Optional baseUrl As String = "https://api.mistral.ai/", Optional httpClient As HttpClient = Nothing)
             If String.IsNullOrWhiteSpace(apiKey) Then
                 Throw New ArgumentException("API key cannot be null or empty.", NameOf(apiKey))
             End If
